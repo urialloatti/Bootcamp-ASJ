@@ -1,0 +1,26 @@
+html {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    padding: 1em 3em;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 30% auto;
+    gap: 15%;
+}
+
+nav {
+    margin: auto 0px;
+}
+nav ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+}
+
+.nav-item {
+    text-decoration: none;
+}
