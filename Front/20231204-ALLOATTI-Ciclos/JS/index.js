@@ -101,67 +101,69 @@ function fizzBuzz() {
 
 // Ejercicio bar:
 
-
-alert("Buenos días.")
-// Inicializamos variables
-let firstMessage = "Que desea hacer?\n1: Realizar pedido.\n2: Pedir chiste.\n3: Consultar la cuenta al momento.\n4: Pagar y salir."
-let menuOptions = "1: Café             $750\n2: Té                 $650\n3: Criollitos (2) $500\n4: Medialuna    $800\n0: Volver atrás"
-let messageTip = "Que porcentaje desea dejar de propina?"
-let total = 0
-let finalPrice = 0
-let op = -1
-
-
-while (op != 4) {
-    op = Number(prompt(firstMessage));
-    switch (op) {
-        case 1:
-            let opMenu = Number(prompt(menuOptions));
-            switch (opMenu) {
-                case 1:
-                    alert("Café pedido.");
-                    total += 750;
-                    break;
-                case 2:
-                    alert("Té pedido.");
-                    total += 650;
-                    break;
-                case 3:
-                    alert("Criollitos pedidos.");
-                    total += 500;
-                    break;
-                case 4:
-                    alert("Medialuna pedida.");
-                    total += 800;
-                    break;
-                case 0:
-                    alert("Volviendo al menú principal...");
-                    break;
-                default:
-                    alert("Error, la opción ingresada no es válida.");
-                    opMenu = Number(prompt(menuOptions));
-            }
-            break;
-        case 2:
-            alert("¿Por qué los programadores prefieren el calor?");
-            alert("Porque les gusta tener ventanas abiertas! :)");
-            break;
-        case 3:
-            alert(`La cuenta actual es $${total}.`);
-            break;
-        case 4:
-            alert(`La cuenta actual es $${total}.`);
-            let opTip = Number(prompt(messageTip));
-            while(isNaN(opTip) || opTip < 0) {
-                alert("Error, ingrese un número por favor.");
-                opTip = Number(prompt(messageTip));
-            }
-            finalPrice = (total + total * opTip / 100).toFixed(2);
-            alert(`La cuenta con propina es $${finalPrice}.`);
-            alert("Muchas gracias por su visita!");
-            break;
-        default:
-            alert("Error, la opción ingresada no es válida.");
-            op = Number(prompt(firstMessage));
-    }
+function bar() {
+    alert("Buenos días.")
+    // Inicializamos variables
+    let firstMessage = "Que desea hacer?\n1: Realizar pedido.\n2: Pedir chiste.\n3: Consultar la cuenta al momento.\n4: Pagar y salir."
+    let menuOptions = "1: Café             $750\n2: Té                 $650\n3: Criollitos (2) $500\n4: Medialuna    $800\n0: Volver atrás"
+    let messageTip = "Que porcentaje desea dejar de propina?"
+    let total = 0
+    let finalPrice = 0
+    let op = -1
+    
+    while (op != 4) {
+        op = Number(prompt(firstMessage));
+        switch (op) {
+            case 1:
+                let opMenu = Number(prompt(menuOptions));
+                switch (opMenu) {
+                    case 1:
+                        alert("Café pedido.");
+                        total += 750;
+                        break;
+                    case 2:
+                        alert("Té pedido.");
+                        total += 650;
+                        break;
+                    case 3:
+                        alert("Criollitos pedidos.");
+                        total += 500;
+                        break;
+                    case 4:
+                        alert("Medialuna pedida.");
+                        total += 800;
+                        break;
+                    case 0:
+                        alert("Volviendo al menú principal...");
+                        break;
+                    default:
+                        alert("Error, la opción ingresada no es válida.");
+                        opMenu = Number(prompt(menuOptions));
+                }
+                break;
+            case 2:
+                alert("¿Por qué los programadores prefieren el calor?");
+                alert("Porque les gusta tener ventanas abiertas! :)");
+                break;
+            case 3:
+                alert(`La cuenta actual es $${total}.`);
+                break;
+            case 4:
+                alert(`La cuenta actual es $${total}.`);
+                if (total != 0) {
+                    let opTip = Number(prompt(messageTip));
+                    while(isNaN(opTip) || opTip < 0) {
+                        alert("Error, ingrese un número por favor.");
+                        opTip = Number(prompt(messageTip));
+                    }
+                    finalPrice = (total + total * opTip / 100).toFixed(2);
+                    alert(`La cuenta con propina es $${finalPrice}.`);
+                }
+                alert("Muchas gracias por su visita!");
+                break;
+            default:
+                alert("Error, la opción ingresada no es válida.");
+                op = Number(prompt(firstMessage));
+        }
+    }    
 }
