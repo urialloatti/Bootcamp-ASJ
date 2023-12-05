@@ -13,56 +13,27 @@ let equalFlag = false;
 
 function manageNumber(num) {
     if (equalFlag) {
-        result.innerHTML = num.toString();
+        if (num == 0) {
+            result.innerHTML = "0";
+        } else {result.innerHTML = num.toString();}
         equalFlag = false;
     } else {
         if (result.innerText != "00") {
-            result.innerHTML += num.toString();
+            if (num == 0) {
+                result.innerHTML = "00"
+            } else {result.innerHTML += num.toString();}
+            
         } else {
             result.innerHTML = num.toString();
         }
     }
 }
 
-numbers[0].addEventListener("click", () => {
-    if (equalFlag) {
-        result.innerHTML = "0";
-        equalFlag = false;
-    } else {
-        if (result.innerText != "00") {
-            result.innerHTML = "00"
-        } else {
-            result.innerHTML = "0"
-        }
-    }
-});
-numbers[1].addEventListener("click", () => {
-    manageNumber(1);
-});
-numbers[2].addEventListener("click", () => {
-    manageNumber(2);
-});
-numbers[3].addEventListener("click", () => {
-    manageNumber(3);
-});
-numbers[4].addEventListener("click", () => {
-    manageNumber(4);
-});
-numbers[5].addEventListener("click", () => {
-    manageNumber(5);
-});
-numbers[6].addEventListener("click", () => {
-    manageNumber(6);
-});
-numbers[7].addEventListener("click", () => {
-    manageNumber(7);
-});
-numbers[8].addEventListener("click", () => {
-    manageNumber(8);
-});
-numbers[9].addEventListener("click", () => {
-    manageNumber(9);
-});
+for (let i = 0; i < numbers.length; i ++) {
+    numbers[i].addEventListener("click", () => {
+        manageNumber(i);
+    });
+}
 
 sum.addEventListener("click", () => {
     aux = Number(result.innerText);
@@ -118,14 +89,14 @@ equal.addEventListener("click", () => {
             break;
         case "divide":
             if (currentValue == 0) {
-                alert("Error! no se puede dividir por 0.");
-                result.innerHTML = "00";
+                // alert("Error! no se puede dividir por 0.");
+                result.innerHTML = "Error!";
                 aux = undefined;
             } else {
                 result.innerHTML = (aux / currentValue).toFixed(2);
                 aux = Number(result.innerText);
-                equalFlag = true;
             }
+            equalFlag = true;
             opp = undefined;
             break;
     }
