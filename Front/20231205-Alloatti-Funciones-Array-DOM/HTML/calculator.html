@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios JS</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+    />
+</head>
+<body>
+    <header class="container text-center bg-secondary py-3">
+        <h1 class="text-light">Ejercicio calculadora</h1>
+    </header>
+    <main class="container bg-light py-2">
+        <section class="row  justify-content-center mt-4">
+            <article class="col-6 bg-dark rounded">
+                <div class="row py-2">
+                    <div class="col text-light text-center">
+                        <h2>Academ-IT calculator</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col col-11 mb-3">
+                        <div class="row text-bg-secondary rounded text-end pt-2">
+                            <div class="col">
+                                <p id="result">00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid d-flex flex-column-reverse mb-3">
+                    <div class="row mb-2">
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="0">0</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-warning btn-operation" id="btn-equals" value="=">=</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-warning btn-operation" id="btn-erease" value="CE">CE</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-warning btn-operation" id="btn-sum" value="+">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="1">1</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="2">2</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="3">3</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-warning btn-operation" id="btn-rest" value="-">-</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="4">4</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="5">5</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="6">6</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-warning btn-operation" id="btn-multiply" value="*">x</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="7">7</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="8">8</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-secondary btn-number" value="9">9</button>
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="row px-3">
+                                <button class="btn btn-warning btn-operation" id="btn-divide" value="/">/</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="container fixed-bottom text-center bg-secondary pt-1">
+        <p class="text-light">Ejercicios del 05/12/2023</p>
+    </footer>
+
+</body>
+<script src="../JS/calculator.js"></script>
+</html>

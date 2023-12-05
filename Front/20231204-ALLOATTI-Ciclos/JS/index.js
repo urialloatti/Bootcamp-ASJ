@@ -184,26 +184,51 @@ function bar() {
 //     }
 // }
 
+
+// function piramid() {
+//     let n = parseInt(prompt("Ingrese un número"));
+//     let message = ""
+//     let line = ""
+//     while(isNaN(n) || n < 0) {
+//         alert("Error, debe ingresar un número positivo.");
+//         n = Number(prompt("Ingrese un número"));
+//     }
+//     for (let i = 1; i < n; i ++) {
+//         line += "*";
+//         message += line + "\n";
+//     }
+//     for (let i = n; i > 0; i--) {
+//         line = "";
+//         for (let j = 1; j <=i; j++) {
+//             line += "*";
+//         }
+//         message += line + "\n";
+//     }
+//     console.log(message);
+// }
+
+
 function piramid() {
     let n = parseInt(prompt("Ingrese un número"));
-    let message = ""
-    let line = ""
+    let upperTriangle = "";
+    let bottomTriangle = "";
     while(isNaN(n) || n < 0) {
         alert("Error, debe ingresar un número positivo.");
         n = Number(prompt("Ingrese un número"));
     }
-    for (let i = 1; i < n; i ++) {
-        line += "*";
-        message += line + "\n";
-    }
-    for (let i = n; i > 0; i--) {
-        line = "";
-        for (let j = 1; j <=i; j++) {
-            line += "*";
+    for (let i = 0; i < n; i++) {
+        let line = "";
+        for (let j = 0; j <= i; j++) {
+            line += "*"; 
         }
-        message += line + "\n";
+        if (i < n - 1) {
+            upperTriangle = upperTriangle + line + "\n";
+            bottomTriangle = "\n" + line + bottomTriangle;
+        } else if (i == n - 1) {
+            upperTriangle += line;
+        }
     }
-    console.log(message);
+    console.log(upperTriangle + bottomTriangle)
 }
 
 function calculateFactorial() {
