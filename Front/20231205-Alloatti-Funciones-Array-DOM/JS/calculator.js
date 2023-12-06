@@ -7,6 +7,8 @@ const rest = document.getElementById("btn-rest");
 const erease = document.getElementById("btn-erease");
 const equal = document.getElementById("btn-equals");
 
+const operators = document.getElementsByClassName("btn-operation")
+
 let aux;
 let opp;
 let equalFlag = false;
@@ -14,17 +16,19 @@ let equalFlag = false;
 function manageNumber(num) {
     if (equalFlag) {
         if (num == 0) {
-            result.innerHTML = "0";
+            result.innerHTML = "00";
         } else {result.innerHTML = num.toString();}
         equalFlag = false;
     } else {
         if (result.innerText != "00") {
             if (num == 0) {
-                result.innerHTML = "00"
+                result.innerHTML += "0"
             } else {result.innerHTML += num.toString();}
             
         } else {
-            result.innerHTML = num.toString();
+            if (num != 0) {
+                result.innerHTML = num.toString();
+            }
         }
     }
 }
@@ -35,29 +39,13 @@ for (let i = 0; i < numbers.length; i ++) {
     });
 }
 
-sum.addEventListener("click", () => {
-    aux = Number(result.innerText);
-    opp = "sum";
-    result.innerHTML = "00";
-});
-
-rest.addEventListener("click", () => {
-    aux = Number(result.innerText);
-    opp = "rest";
-    result.innerHTML = "00";
-});
-
-multiply.addEventListener("click", () => {
-    aux = Number(result.innerText);
-    opp = "multiply";
-    result.innerHTML = "00";
-});
-
-divide.addEventListener("click", () => {
-    aux = Number(result.innerText);
-    opp = "divide";
-    result.innerHTML = "00";
-});
+for (let i = 0; i < operators.length; i++) {
+    operators[i].addEventListener("click", () => {
+        aux = Number(result.innerText);
+        opp = operators[i].value;
+        result.innerHTML = "00";
+    });
+}
 
 erease.addEventListener("click", () => {
     aux = undefined;
