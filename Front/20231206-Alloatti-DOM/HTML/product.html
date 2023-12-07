@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shop</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../CSS/style-productb.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <header class="row my-3">
+            <div class="col">
+                <h1>My Shop</h1>
+            </div>
+            <div class="col col-8 d-flex justify-content-end">
+                <ul class="list-group d-flex flex-row ">
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="index.html" class="nav-item">Home</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Shop</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Demos</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Blocks</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Components</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Contact Us</a></li>
+                    <li class="list-group-item border-0 px-1">
+                        <a class="btn btn-light" href="cart.html" class="nav-item">
+                            My Cart
+                            <span class="position-absolute top-0 start-100 translate-middle bg-danger text-white" id="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <section class="row mb-5">
+                <div class="col">
+                    <div class="d-flex align-items-center">
+                        <div class="mx-2"><p class="h4">Product →</p></div>
+                        <div class="pt-1"><p class="fw-bold">Sunset Sunglasses</p></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex ">
+                        <input type="text" name="" id="search-bar" class="form-control" placeholder="Search products...">
+                        <button class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-6">
+                            <select class="form-select text-bg-dark" aria-label="Default select example">
+                                <option selected>PUBLIC PRICELIST</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row">
+                    <div class="col col-8">
+                        <img id="product-img" 
+                        src="https://dummyimage.com/1200x800/000/fff&text=Product" 
+                        alt="Yellow scarf and shoes"
+                        class="img-fluid">
+                    </div>
+                    <div class="col">
+                        <h1 id="product-name">Sunset sunglasses</h1>
+                        <p class="fs-4" id="product-price"><strong>$</strong>79.00</p>
+                        <div class="d-flex justify-content-center">
+                            <div class="color-selected" id="White"></div>
+                            <div class="color-selected" id="Green"></div>
+                            <div class="color-selected" id="Orange"></div>
+                            <div class="color-selected" id="Black"></div>
+                            <div class="color-selected" id="Blue"></div>
+                            <div class="color-selected" id="Yellow"></div>
+                        </div>
+                        <div class="quantity-selector py-1 d-flex m-2">
+                            <button class="btn btn-primary rounded-circle" id="rest">-</button>
+                            <input type="number"  id="quantity-selector" value="1" class="form-control mx-2 text-center">
+                            <button class="btn btn-primary rounded-circle" id="sum">+</button>
+                        </div>
+                        <div class="d-flex justify-content-center my-2">
+                            <button class="btn btn-info text-light" id="add-cart"> ADD TO CART</button>
+                        </div>
+                        <hr class="description-hr lh-sm">
+                        <p class="description lh-sm">Glasses, also known as eyeglasses or spectacles, are devices consisting of lenses mounted in a frame that holds them in front of a person's eyes.</p>
+                        <hr class="description-hr lh-sm">
+                        <p class="description lh-sm">30-day money-back guarantee</p>
+                        <p class="description lh-sm">Free Shipping in U.S.</p>
+                        <p class="description lh-sm">Buy now, get in 2 days</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        </div>
+    <script src="../JS/index.js"></script>
+    <script src="../JS/products.js"></script>
+</body>
+</html>

@@ -3,40 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio Input sin vocales</title>
+    <title>My Shop</title>
     <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
     crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="../CSS/styles.css">
 </head>
 <body>
-    <header class="container text-center bg-secondary py-3">
-        <h1 class="text-light">Input sin vocales</h1>
-    </header>
-    <main class="container bg-light py-2 mb-3">
-        <section class="container mb-2">
-            <article>
-                <div class="row">
-                    <div class="col text-center  ">
-                        <input type="text" class="form-label bg-secondary text-light rounded px-2" id="input-form">
-                    </div>
-                </div>
-                <div class="row g-1">
-                    <div class="col d-flex flex-column align-items-center justify-content-center">
-                        <div class="bg-success bg-gradient rounded px-5 py-2">
-                            <p class="h1 text-light" id="to-show"></p>
+    <div class="container">
+        <header class="row my-3">
+            <div class="col">
+                <h1>My Shop</h1>
+            </div>
+            <div class="col col-8 d-flex justify-content-end">
+                <ul class="list-group d-flex flex-row ">
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="index.html" class="nav-item">Home</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Shop</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Demos</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Blocks</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Components</a></li>
+                    <li class="list-group-item border-0 px-1"><a class="btn btn-light" href="" class="nav-item">Contact Us</a></li>
+                    <li class="list-group-item border-0 px-1">
+                        <a class="btn btn-light" href="cart.html" class="nav-item">
+                            My Cart
+                            <span class="position-absolute top-0 start-100 translate-middle bg-danger text-white" id="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <section class="container-fluid d-flex justify-content-between">
+                <div>
+                    <div class="row">
+                        <div class="col col-md-8">
+                            <div class="d-flex ">
+                                <input type="text" name="" id="search-bar" class="form-control" placeholder="Search products...">
+                                <button class="btn btn-secondary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <select class="form-select text-bg-dark" aria-label="Default select example">
+                                <option selected>PUBLIC PRICELIST</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-            </article>
-        </section>
-    </main>
-    <footer class="container fixed-bottom text-center bg-secondary pt-1">
-        <p class="text-light">Ejercicios del 06/12/2023</p>
-    </footer>
+                <div>
+                    <div class="btn-group me-2" role="group" aria-label="Second group">
+                        <button type="button" class="btn btn-secondary" disabled>Prev</button>
+                        <button type="button" class="btn btn-secondary">1</button>
+                        <button type="button" class="btn btn-secondary">2</button>
+                        <button type="button" class="btn btn-secondary">3</button>
+                        <button type="button" class="btn btn-secondary">Next</button>
+                    </div>
+                </div>
+            </section>
+            <section class="container-fluid d-flex mt-5">
+                <div class="row gx-3 gy-3">
+                    <div class="col col-lg-4 col-xl-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://dummyimage.com/600x400/000/fff&text=Product" class="card-img-top" alt="Yellow scarf and shoes">
+                            <div class="card-body">
+                                <h5 class="card-title text-info-emphasis">Yellow Scarf and Shoes</h5>
+                                <div class="text-end">
+                                    <p class="card-text"><strong>$</strong>120.00</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="product.html" class="btn btn-secondary">Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-4 col-xl-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://dummyimage.com/600x400/000/fff&text=Product" class="card-img-top" alt="Yellow scarf and shoes">
+                            <div class="card-body">
+                                <h5 class="card-title text-info-emphasis">Yellow Scarf and Shoes</h5>
+                                <div class="text-end">
+                                    <p class="card-text"><strong>$</strong>120.00</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="product.html" class="btn btn-secondary">Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-4 col-xl-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://dummyimage.com/600x400/000/fff&text=Product" class="card-img-top" alt="Yellow scarf and shoes">
+                            <div class="card-body">
+                                <h5 class="card-title text-info-emphasis">Yellow Scarf and Shoes</h5>
+                                <div class="text-end">
+                                    <p class="card-text"><strong>$</strong>120.00</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="product.html" class="btn btn-secondary">Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-4 col-xl-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://dummyimage.com/600x400/000/fff&text=Product" class="card-img-top" alt="Yellow scarf and shoes">
+                            <div class="card-body">
+                                <h5 class="card-title text-info-emphasis">Yellow Scarf and Shoes</h5>
+                                <div class="text-end">
+                                    <p class="card-text"><strong>$</strong>120.00</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="product.html" class="btn btn-secondary">Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-4 col-xl-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://dummyimage.com/600x400/000/fff&text=Product" class="card-img-top" alt="Yellow scarf and shoes">
+                            <div class="card-body">
+                                <h5 class="card-title text-info-emphasis">Yellow Scarf and Shoes</h5>
+                                <div class="text-end">
+                                    <p class="card-text"><strong>$</strong>120.00</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="product.html" class="btn btn-secondary">Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-4 col-xl-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://dummyimage.com/600x400/000/fff&text=Product" class="card-img-top" alt="Yellow scarf and shoes">
+                            <div class="card-body">
+                                <h5 class="card-title text-info-emphasis">Yellow Scarf and Shoes</h5>
+                                <div class="text-end">
+                                    <p class="card-text"><strong>$</strong>120.00</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="product.html" class="btn btn-secondary">Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://dummyimage.com/600x400/000/fff&text=Product" class="card-img-top" alt="Yellow scarf and shoes">
+                            <div class="card-body">
+                                <h5 class="card-title text-info-emphasis">Yellow Scarf and Shoes</h5>
+                                <div class="text-end">
+                                    <p class="card-text"><strong>$</strong>120.00</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="product.html" class="btn btn-secondary">Buy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
+    <script src="../JS/index.js"></script>
 </body>
-<script src="../JS/index.js"></script>
 </html>

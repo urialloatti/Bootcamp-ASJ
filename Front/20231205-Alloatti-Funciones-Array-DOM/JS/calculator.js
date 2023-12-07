@@ -1,13 +1,8 @@
 const result = document.getElementById("result");
 const numbers = document.getElementsByClassName("btn-number");
-const divide = document.getElementById("btn-divide");
-const multiply = document.getElementById("btn-multiply");
-const sum = document.getElementById("btn-sum");
-const rest = document.getElementById("btn-rest");
 const erease = document.getElementById("btn-erease");
 const equal = document.getElementById("btn-equals");
-
-const operators = document.getElementsByClassName("btn-operation")
+const operators = document.getElementsByClassName("btn-operation");
 
 let aux;
 let opp;

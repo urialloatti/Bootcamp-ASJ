@@ -1,11 +1,20 @@
-const input = document.getElementById("input-form");
-const text = document.getElementById("to-show");
+const cartCounterIndex = document.getElementById("cart-count");
 
-input.addEventListener("keyup", () => {
-    let vowels = ["a", "e", "i", "o", "u"]
-    let str = input.value;
-    let letter = str[str.length - 1];
-    if (vowels.includes(letter.toLowerCase())) {
-        text.innerHTML += "_"
-    } else {text.innerHTML += letter}
-});
+function loadPage() {
+    let currentCart = [];
+    try {
+        currentCart = JSON.parse(localStorage.getItem("product"));
+        currentCart[0];
+        cartCounterIndex.style.display = "block";
+    } catch(err) {
+        currentCart = [];
+    };
+    let count = 0;
+    
+    for (prod of currentCart) {
+        count += parseInt(prod.quant);
+    }
+    cartCounterIndex.innerText = count;
+}
+
+loadPage();
