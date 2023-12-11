@@ -61,7 +61,7 @@ function loadProduct(product) {
     <div class="col-12">
         <div class="row mx-2 mb-2 bg-dark-subtle text-emphasis-dark rounded py-3">
             <div class="col-3">
-                <img src="https://dummyimage.com/600x400/000/fff&text=Product" alt="${product.prodName}" class="rounded">
+                <img src="${product.imgSrc}" alt="${product.prodName}" class="rounded">
             </div>
             <div class="col">
                 <div class="row">
