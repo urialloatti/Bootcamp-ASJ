@@ -38,7 +38,7 @@ function loadPage(num) {
 function generateColors(num) {
     colors = [];
     for (let i = 0; i < num; i++) {
-        let cadena = `rgb(${getNumber(255)}, ${getNumber(255)}, ${getNumber(255)})`;
+        let cadena = `rgb(${getNumber(256)}, ${getNumber(256)}, ${getNumber(256)})`;
         colors.push(cadena);
     }
     return colors;
@@ -48,6 +48,7 @@ function victoria(pickedColor, cuadrados) {
     for (let square of cuadrados) {
         square.style.backgroundColor = pickedColor;    }
     message.innerText = "Correcto!";
+    h1.style.backgroundColor = pickedColor;
     isSolved = true;
 }
 
@@ -77,5 +78,5 @@ function btnLoad(num) {
 
 const getNumber = (top) => Math.floor(Math.random() * top);
 
-loadPage(6);
+loadPage(12);
 
