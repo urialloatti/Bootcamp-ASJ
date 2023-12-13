@@ -1,27 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContentComponent } from './components/content/content.component';
-import { HeaderComponent } from './components/header/header.component';
-import { CardComponent } from './components/card/card.component';
-import { MainComponent } from './components/main/main.component';
-import { SideBarComponent } from './components/sideBar/sideBar.component';
 
+import { HeaderComponent } from './components/header/header.component';
+import { MainComponent } from './components/main/main.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContentComponent,
     HeaderComponent,
-    CardComponent,
     MainComponent,
-    SideBarComponent
+    FooterComponent,
+    SideBarComponent,
+    ToDoListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,18 @@
+<aside>
+  <div class="text-center mb-3">
+      <p class="h2">Other News</p>
+  </div>
+  <article class="mb-2" *ngFor="let article of news">
+      <div class="row mb-3">
+          <div class="col-12">
+              <a href="/otherPage" class="h5 text-body-secondary">{{ article.title }}</a>
+          </div>
+      </div>
+      <div class="row g-2 align-items-center">
+          <div class="col-4">
+              <img src="{{ article.imgSrc }}" class="img-thumbnail" alt="Gaza">
+          </div>
+          <div class="col-8 r">{{ article.abstract }}</div>
+      </div>
+  </article>
+</aside>

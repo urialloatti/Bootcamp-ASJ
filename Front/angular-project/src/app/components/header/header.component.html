@@ -1,0 +1,14 @@
+<div class="container-fluid bg-warning bg-gradient pt-3">
+    <div class="row">
+        <div class="col-md-3 ms-3">
+            <h2>My projects</h2>
+        </div>
+        <div class="col  px-3">
+            <ul class="bg-transparent d-flex justify-content-end">
+                <li class="list-group-item ms-2" *ngFor="let option of menuOptions">
+                    <a href="#" class="btn btn-outline-dark">{{ option }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
