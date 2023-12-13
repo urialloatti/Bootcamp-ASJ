@@ -1,0 +1,9 @@
+<div class="container d-flex">
+    <div class="card mx-2 mb-2" style="width: 18rem;" *ngFor="let person of names">
+        <img class="card-img-top" src="https://dummyimage.com/600x400/000/fff&text={{person.name}}'s-Picture" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{person.name}}</h5>
+            <p class="card-text">Tiene {{person.age}} años.</p>
+        </div>
+    </div> 
+</div>
