@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainComponent } from './main.component';
+import { SimpsonsTableComponent } from './simpsons-table.component';
 
-describe('MainComponent', () => {
-  let component: MainComponent;
-  let fixture: ComponentFixture<MainComponent>;
+describe('SimpsonsTableComponent', () => {
+  let component: SimpsonsTableComponent;
+  let fixture: ComponentFixture<SimpsonsTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MainComponent]
+      declarations: [SimpsonsTableComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MainComponent);
+    fixture = TestBed.createComponent(SimpsonsTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -22,7 +22,6 @@ export class ToDoListComponent {
   removeItem(index: number) {
     this.toDoListFiltered[index].toggleDelete();
     this.toDoListFiltered.splice(index, 1);
-    
   }
 
   filterAll() {
@@ -42,21 +41,22 @@ export class ToDoListComponent {
 
 class ToDo {
 
-  constructor(value: string) {
-    this.value = value;
-    this.isDone = false;
-    this.isDeleted = false
-    this.date = new Date();
-  }
-  value: string;
-  isDone: boolean;
-  isDeleted: boolean;
   date: Date;
+  isDeleted: boolean;
+  isDone: boolean;
+  value: string;
 
-  toggleDone() {
-    (this.isDone)? this.isDone = false: this.isDone = true;
+  constructor(value: string) {
+    this.date = new Date();
+    this.isDeleted = false
+    this.isDone = false;
+    this.value = value;
   }
+
   toggleDelete() {
     (this.isDeleted)? this.isDeleted = false: this.isDeleted = true;
+  }
+  toggleDone() {
+    (this.isDone)? this.isDone = false: this.isDone = true;
   }
 }

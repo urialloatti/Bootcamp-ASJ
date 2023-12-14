@@ -1,0 +1,29 @@
+<section *ngIf="charactersList.length > 0">
+    <table class="table table-striped rounded">
+        <thead>
+            <tr>
+                <th>Img</th>
+                <th>Nombre</th>
+                <th>Profesión</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr *ngFor="let character of charactersList" class="align-middle">
+                <th>
+                    <img src="{{ character.url }}" alt="{{ character.name }}" class="table-image img-thumbnail">
+                </th>
+                <th>{{ character.name }}</th>
+                <th>{{ character.profession }}</th>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<section *ngIf="charactersList.length == 0">
+    <div class="row m-2 py-4">
+        <div class="col"></div>
+        <div class="col-8 bg-warning-subtle rounded text-center py-5">
+            <p class="h3 text-warning-emphasis">No hay personajes para mostrar</p>
+        </div>
+        <div class="col"></div>
+    </div>
+</section>

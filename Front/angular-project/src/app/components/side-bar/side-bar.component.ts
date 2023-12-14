@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrl: './side-bar.component.css'
 })
 export class SideBarComponent {
-  projectsList: string[] = ["Project 1", "Project 2", "Project 3", "Project 4", "Project 5", "Project 6", ]
+  projectsList: LinkName[] = [
+    {
+      name: "To do list",
+      path: "projects/to-do-list"
+    },
+    {
+      name: "Simpson's Table",
+      path: "projects/simpsons-table"
+    }
+  ]
+}
+
+type LinkName = {
+  name: string,
+  path: string
 }

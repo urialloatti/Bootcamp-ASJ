@@ -1,12 +1,14 @@
 <div class="row my-2">
     <div class="col text-center">
-        <h3>Projects</h3>
+        <h3 class="text-warning-emphasis">Projects</h3>
     </div>
 </div>
 <div class="row mb-5">
     <div class="col">
         <ul class=" list-group mb-4">
-            <button class="list-group-item list-group-item-action list-group-item-warning" *ngFor="let project of projectsList">{{ project }}</button>
+            <li *ngFor="let project of projectsList">
+                <button class="list-group-item list-group-item-action list-group-item-warning" [routerLink]="project.path">{{ project.name }}</button>
+            </li>
         </ul>
     </div>
 </div>

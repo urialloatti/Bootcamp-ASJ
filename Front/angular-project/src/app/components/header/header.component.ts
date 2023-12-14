@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  menuOptions: String[] = ["About Us", "Projects", "Donate"]
+  menuOptions: LinkName[] = [
+    {
+      name: "About us",
+      path: "about-us"
+    }
+  ]
+}
+
+type LinkName = {
+  name: string,
+  path: string
 }

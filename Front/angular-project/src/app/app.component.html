@@ -2,10 +2,17 @@
   <header>
     <app-header></app-header>
   </header>
-  <main>
-    <app-main></app-main>
+  <main class="container-fluid bg-light h-100">
+    <div class="row h-100">
+      <aside class="col-md-3 bg-warning-subtle" >
+          <app-side-bar></app-side-bar>
+      </aside>
+      <section class="col bg-light-subtle ms-3">
+          <router-outlet></router-outlet>
+      </section>
+  </div>
   </main>
   <footer class="fixed-bottom text-center bg-secondary pt-1">
     <app-footer></app-footer>
-</footer>
+  </footer>
 </div>
