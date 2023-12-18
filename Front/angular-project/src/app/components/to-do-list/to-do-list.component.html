@@ -1,4 +1,4 @@
-<div class="container mt-4 h-100 bg-secondary-subtle rounded">
+<div class="container pt-5 h-100 bg-secondary-subtle rounded">
     <div class="row pt-4">
         <div class="col-5">
             <div class="container bg-light py-3 rounded">
@@ -36,7 +36,7 @@
                         <button class="btn btn-secondary" (click)="filterDeleted()">See deleted</button>
                     </div>
                 </div>
-                <div class="row text-start">
+                <div class="row text-start" *ngIf="toDoListFiltered.length > 0">
                     <div class="col-12">
                         <ul class="list-group">
                             <li class="list-group-item" *ngFor="let item of toDoListFiltered; index as i">
@@ -47,23 +47,23 @@
                                     </div>
                                     <div class="col d-flex align-items-center justify-content-end">
                                         <button class="btn pb-2 mx-1" ngClass="{{(item.isDone)? 'btn-success':'btn-outline-success'}}" (click)="item.toggleDone()">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-square" viewBox="0 0 16 16">
-                                                <path d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5z"/>
-                                                <path d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0"/>
-                                            </svg>
+                                            <i class="bi bi-check-square"></i>
                                         </button>
                                         <button class="btn btn-outline-danger pb-2 mx-1" (click)="removeItem(i)">
-                                            <svg *ngIf="item.isDeleted" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-recycle" viewBox="0 0 16 16">
-                                                <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"/>
-                                            </svg>
-                                            <svg *ngIf="!item.isDeleted" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-                                            </svg>
+                                            <i *ngIf="!item.isDeleted" class="bi bi-trash3"></i>
+                                            <i *ngIf="item.isDeleted" class="bi bi-recycle"></i>
                                         </button>
                                     </div>
                                 </div>
                             </li>
                         </ul>
+                    </div>
+                </div>
+                <div *ngIf="toDoListFiltered.length == 0">
+                    <div class="row p-4">
+                        <div class="col bg-warning-subtle rounded text-center py-5">
+                            <p class="h3 text-warning-emphasis">We don't have elemets to show you.</p>
+                        </div>
                     </div>
                 </div>
             </article>

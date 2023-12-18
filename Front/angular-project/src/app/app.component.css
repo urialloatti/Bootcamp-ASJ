@@ -1,9 +1,11 @@
 header {
     flex: 0 1 auto;
+    background-color: var(--accent-strong);
 }
 
 main {
     flex: 1 1 auto;
+    background-color: var(--light);
 }
 
 #container {
@@ -12,4 +14,12 @@ main {
     height: 100vh;
     padding-left: 0px;
     padding-right: 0px;
+}
+
+.aside-bar {
+    background-color: var(--accent);
+}
+
+footer {
+    background-color: var(--dark);
 }

@@ -14,6 +14,10 @@ export class SideBarComponent {
     {
       name: "Simpson's Table",
       path: "projects/simpsons-table"
+    },
+    {
+      name: "Rick and Morty API",
+      path: "projects/rick-and-morty"
     }
   ]
 }

@@ -1,0 +1,13 @@
+#background {
+    background-image: url("../../../assets/about-us-background.jpg");
+    padding: 0px;
+    margin: 0px;
+}
+
+h2 {
+    color: var(--middle-gray);
+}
+
+p {
+    color: var(--dark-lighter);
+}

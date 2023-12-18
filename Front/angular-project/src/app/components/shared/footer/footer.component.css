@@ -1,0 +1,12 @@
+p {
+    color: var(--middle-gray);
+}
+
+.footer-text {
+    color: var(--middle-gray);
+}
+
+.footer-text:hover {
+    color: var(--light-darker);
+    transition: 0.3s;
+}

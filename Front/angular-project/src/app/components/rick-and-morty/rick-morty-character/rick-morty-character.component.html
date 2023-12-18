@@ -1,0 +1,45 @@
+<div class="container-fluid py-5">
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h1>{{character.name}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col">
+            <div class="row p-3 mx-5 dounded" id="full-card">
+                <div class="col col-md-4 " >
+                    <img src="{{character.image}}" alt="{{character.name}}" class="img-thumbnail rounded">
+                </div>
+                <div class="col d-flex flex-column justify-content-around ps-4">
+                    <div class="row">
+                        <div class="col text-start">
+                            <p class="fs-4"><strong class="fs-3">Spices: </strong> {{character.species}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-start">
+                            <p class="fs-4"><strong class="fs-3">Origin: </strong> {{character.origin.name}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-start">
+                            <p class="fs-4"><strong class="fs-3">Status: </strong> {{character.status}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-start">
+                            <p class="fs-4"><strong class="fs-3">Gender: </strong> {{character.gender}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row mt-3">
+        <div class="col text-center">
+            <button class="btn btn-secondary" routerLink="../">Go back</button>
+        </div>
+    </div>
+</div>

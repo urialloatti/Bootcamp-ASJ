@@ -8,8 +8,12 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   menuOptions: LinkName[] = [
     {
-      name: "About us",
-      path: "about-us"
+      name: "Home",
+      path: "home"
+    },
+    {
+      name: "Projects",
+      path: "projects"
     }
   ]
 }
