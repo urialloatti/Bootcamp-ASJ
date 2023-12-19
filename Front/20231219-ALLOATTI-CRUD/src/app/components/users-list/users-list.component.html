@@ -1,0 +1,36 @@
+<div class="row gx-5">
+    <div class="col"></div>
+    <div class="col col-7">
+        <div class="row mb-4">
+            <div class="col text-center">
+                <h1>Users List</h1>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr class="text-center">
+                    <th><i class="bi bi-person-bounding-box"></i></th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>More</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users" class="text-center align-middle">
+                    <td style="width: 7em;"><img src="{{ user.avatar }}" alt="{{ user.first_name }}"
+                            class="img-thumbnail"></td>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>
+                        <button class="btn btn-outline-secondary me-1" routerLink="/user/{{user.id}}"><i
+                                class="bi bi-pencil-square"></i></button>
+                        <button class="btn btn-outline-danger ms-2" (click)="deleteUser(user.id)"><i
+                                class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col">
+    </div>
+</div>

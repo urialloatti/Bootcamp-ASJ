@@ -1,0 +1,37 @@
+<div class="row h-100 pb-5">
+    <div class="col"></div>
+    <div class="col col-5">
+        <div class="row mb-4">
+            <div class="col text-center py-2">
+                <h3>Add new user</h3>
+            </div>
+        </div>
+        <form #myForm="ngForm" (ngSubmit)="submitNewUser(myForm)" class="bg-light p-4 rounded">
+            <input type="hidden" name="id" [(ngModel)]="newUser.id">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="email" class="form-control" placeholder="Name" name="name" [(ngModel)]="newUser.name"
+                    #name="ngModel" required minlength="8" [ngClass]="name.errors? 'is-invalid':'is-valid'">
+                <div class="col-auto" *ngIf="name.errors?.['minlength']">
+                    <span class="form-text">
+                        Must be at least 8 characters long.
+                    </span>
+                </div>
+                <div class="col-auto" *ngIf="name.errors?.['required']">
+                    <span class="form-text">
+                        Must not be empty.
+                    </span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Job</label>
+                <input type="text" class="form-control" placeholder="Job" name="job" [(ngModel)]="newUser.job">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-secondary mx-2" [disabled]="myForm.invalid">Submit</button>
+                <button class="btn btn-secondary mx-2" (click)="myForm.reset()">Clear</button>
+            </div>
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
