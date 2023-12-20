@@ -1,0 +1,12 @@
+img {
+    height: 18rem;
+    width: 18rem;
+    object-fit: cover;
+}
+.my-card {
+    width: 100%;
+}
+
+h2 {
+    color: #a5d2e6;
+}

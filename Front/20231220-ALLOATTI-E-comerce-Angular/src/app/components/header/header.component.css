@@ -1,0 +1,13 @@
+.options {
+    cursor: pointer;
+    color: #EEEEEE;
+}
+
+.options:hover {
+    color: #a5d2e6;
+    transition: 0.3s;
+}
+
+.active {
+    color: #a5d2e6;
+}

@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    <section *ngIf="hasProducts()">
+        <div class="row gx-5">
+            <div class="col col-8 bg-light rounded py-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="picture-col"></th>
+                            <th>Product</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-end">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cartProd of productsList" class="align-middle">
+                            <td class="picture-col"><img src="{{ cartProd.product.images[0] }}" alt="{{ cartProd.product.title }}"></td>
+                            <td>{{ cartProd.product.title }}</td>
+                            <td class="text-center">{{ cartProd.quantity }}</td>
+                            <td class="text-end">{{ cartProd.product.price | currency:'USD'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col ms-3 bg-light rounded">
+                <div class="row mb-3">
+                    <div class="col text-center">
+                        <h3>Cart Summary</h3>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">Total</div>
+                    <div class="col"><hr></div>
+                    <div class="col-3 text-end">{{totalPrice | currency:'USD'}}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">Shipping</div>
+                    <div class="col"><hr></div>
+                    <div class="col-3 text-end">{{shipping | currency:'USD'}}</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">Final</div>
+                    <div class="col"><hr></div>
+                    <div class="col-3 text-end">{{finalPrice | currency:'USD'}}</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col text-center">
+                        <button class="btn btn-secondary" [disabled]="!hasProducts()" (click)="confirmPurchase()">Confirm Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="!hasProducts()" class="bg-light pb-3 rounded">
+        <div class="row p-5">
+            <div class="col text-center">
+                <h2>There are no products in your cart!</h2>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col text-center">
+                <button class="btn btn-secondary" routerLink="/">Go back Home</button>
+            </div>
+        </div>
+    </section>
+</div>

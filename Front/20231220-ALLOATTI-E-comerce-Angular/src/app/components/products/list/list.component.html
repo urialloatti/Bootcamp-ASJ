@@ -1,0 +1,37 @@
+<div class="container pt-4">
+    <div class="row mb-3" *ngIf="categoryName">
+        <div class="col-2"></div>
+        <div class="col text-center bg-dark rounded text-light py-2">
+            <h2>{{ categoryName }} products</h2>
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <section *ngIf="productsList.length > 0">
+        <div class="row gy-3">
+            <div class="col-3" *ngFor="let product of productsList">
+                <div class="card align-items-center pt-2">
+                    <img src="{{product.images[0]}}" class="img-thumbnail" alt="{{product.title}}" (error)="imageNotFound($event)" >
+                    <div class="card-body my-card">
+                        <h5 class="card-title text-start">{{product.title}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+                        <div class="text-center">
+                            <a routerLink="/products/{{product.id}}" class="btn btn-secondary">See product</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="productsList.length == 0" class="bg-light pb-3 rounded">
+        <div class="row p-5">
+            <div class="col text-center">
+                <h3>There are no products in this category!</h3>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col text-center">
+                <button class="btn btn-secondary" routerLink="/">Go back Home</button>
+            </div>
+        </div>
+    </section>
+</div>
