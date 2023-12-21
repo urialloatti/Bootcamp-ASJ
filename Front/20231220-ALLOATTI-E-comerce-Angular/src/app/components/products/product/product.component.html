@@ -1,53 +1,66 @@
 <div class="container pt-5">
-<div class="row">
-    <div class="col">
-        <div class="container bg-light rounded py-3">
-            <div class="row py-3">
-                <div class="col d-flex justify-content-center"><img src="{{principalImg}}" alt="" id="principal-img"></div>
-            </div>
-            <div class="row">
-                <div class="col d-flex justify-content-center"><img src="{{image}}" alt="" id="secondary-img" class="mx-2" *ngFor="let image of currentProduct.images" (click)="changeImage(image)"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="container bg-light rounded py-3">
-            <div class="row">
-                <div class="col text-center">
-                    <h2>{{ currentProduct.title }}</h2>
+    <div class="row">
+        <div class="col">
+            <div class="container bg-light rounded py-3">
+                <div class="row py-3">
+                    <div class="col d-flex justify-content-center"><img src="{{principalImg}}" alt=""
+                            id="principal-img"></div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col text-start">
-                    <p><strong>Category: </strong>{{ currentProduct.category.name }}</p>
-                </div>
-            </div>
-            <div class="row mb-5 pb-5">
-                <div class="col text-start">
-                    <p>{{ currentProduct.description }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2"><p>Price</p></div>
-                <div class="col"><hr></div>
-                <div class="col-3 text-end">
-                    <p>{{ currentProduct.price | currency:"USD" }}</p>
-                </div>
-            </div>
-            <div class="row mb-2">
-                <div class="col-9 text-center">
-                    <input type="number" name="quantity" class="form-control" [(ngModel)]="quantity" min="1">
-                </div>
-                <div class="col text-end">
-                    <p>{{quantity * currentProduct.price | currency:"USD"}}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <button class="btn btn-secondary" (click)="addToCart()" [disabled]="quantity < 1">Buy</button>
+                <div class="row">
+                    <div class="col d-flex justify-content-center"><img src="{{image}}" alt="" id="secondary-img"
+                            class="mx-2" *ngFor="let image of currentProduct.images" (click)="changeImage(image)"></div>
                 </div>
             </div>
         </div>
+        <div class="col">
+            <div class="container bg-light rounded py-3">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2>{{ currentProduct.title }}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-start">
+                        <p><strong>Category: </strong>{{ currentProduct.category.name }}</p>
+                    </div>
+                </div>
+                <div class="row mb-5 pb-5">
+                    <div class="col text-start">
+                        <p>{{ currentProduct.description }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <p>Price</p>
+                    </div>
+                    <div class="col">
+                        <hr>
+                    </div>
+                    <div class="col-3 text-end">
+                        <p>{{ currentProduct.price | currency:"USD" }}</p>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-9 text-center">
+                        <input type="number" name="quantity" class="form-control" [(ngModel)]="quantity" min="1">
+                    </div>
+                    <div class="col text-end">
+                        <p>{{quantity * currentProduct.price | currency:"USD"}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="btn btn-secondary" (click)="addToCart()" [disabled]="quantity < 1">Buy</button>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col mx-3">
+                        <div class="alert alert-success rounded text-center" role="alert" *ngIf="flagAlert">
+                            <p>Product added succesfully!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </div>

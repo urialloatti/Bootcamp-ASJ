@@ -1,3 +1,4 @@
+import { filter } from "rxjs";
 import { CategoryInterface } from "./categoryInterface";
 
 export interface ProductInterface {
@@ -12,4 +13,12 @@ export interface ProductInterface {
 export interface CartProduct {
     product: ProductInterface,
     quantity: number
+}
+
+export interface FilterList {
+    title?: string,
+    price?: number,
+    price_min?: number,
+    price_max?: number,
+    categoryId?: number
 }

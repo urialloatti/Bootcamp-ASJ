@@ -1,0 +1,92 @@
+<div class="container-fluid bg-light rounded py-3">
+    <div class="row my-3">
+        <div class="col text-center">
+            <h3>Filter products</h3>
+        </div>
+    </div>
+    <div class="row px-3 mb-3" *ngIf="filterFlag">
+        <div class="col-6" *ngIf="filterTags.title">
+            <span class="form-text">
+                Title:
+            </span>
+            <div class="row">
+                <div class="col bg-info-subtle d-flex align-items-center justify-content-between mx-1 rounded">
+                    <p class="p-0 m-0 align-middle">{{filterTags.title}}</p>
+                    <button type="button" class="btn-close btn-delete" (click)="removeFilter('title')"></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6" *ngIf="filterTags.price">
+            <span class="form-text">
+                Price:
+            </span>
+            <div class="row">
+                <div class="col bg-info-subtle d-flex align-items-center justify-content-between mx-1 rounded">
+                    <p class="p-0 m-0 align-middle">{{filterTags.price}}</p>
+                    <button type="button" class="btn-close btn-delete" (click)="removeFilter('price')"></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6" *ngIf="filterTags.price_min">
+            <span class="form-text">
+                Price range:
+            </span>
+            <div class="row">
+                <div class="col bg-info-subtle d-flex align-items-center justify-content-between mx-1 rounded">
+                    <p class="p-0 m-0 align-middle">{{(filterTags.price_min)? filterTags.price_min: '0'}} - {{(filterTags.price_max)? filterTags.price_max: '-' }}</p>
+                    <button type="button" class="btn-close btn-delete" (click)="removeRangeFilter()"></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6" *ngIf="filterTags.categoryId">
+            <span class="form-text">
+                Category:
+            </span>
+            <div class="row">
+                <div class="col bg-info-subtle d-flex align-items-center justify-content-between mx-1 rounded">
+                    <p class="p-0 m-0 align-middle">{{getCategoryName(filterTags.categoryId)}}</p>
+                    <button type="button" class="btn-close btn-delete" (click)="removeFilter('categoryId')"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form #myForm="ngForm" (ngSubmit)="sendParams()">
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" class="form-control" placeholder="Name" name="title" [(ngModel)]="filter.title">
+        </div>
+        <div class="">
+            <select name="category" class="form-select" hidden [(ngModel)]="filter.categoryId">
+                <option value="" selected>All</option>
+                <option value="{{category.id}}" *ngFor="let category of categoryList">{{ category.name }}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Price</label>
+            <input type="number" class="form-control" placeholder="Price" name="price" [(ngModel)]="filter.price">
+        </div>
+        <div class="mb-3">
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">Min</label>
+                    <input type="number" #minPrice="ngModel" class="form-control" placeholder="Min Price" name="price_min" [(ngModel)]="filter.price_min" [max]="filter.price_max || 999999">
+                </div>
+                <div class="col">
+                    <label class="form-label">Max</label>
+                    <input type="number" #maxPrice="ngModel" class="form-control" placeholder="Max Price" name="price_max" [(ngModel)]="filter.price_max" [min]="filter.price_min|| 1">
+                </div>
+            </div>            
+            <div class="col-auto" *ngIf="minPrice.errors?.['max']">
+                <span class="form-text">
+                    The minimum price can't be higher than the maximum.
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <button class="btn btn-secondary me-1" type="submit" [disabled]="myForm.invalid">Filter</button>
+                <button class="btn btn-secondary ms-1" (click)="clearFilters(myForm)" *ngIf="filterFlag">Clear Filters</button>
+            </div>
+        </div>
+    </form>
+</div>

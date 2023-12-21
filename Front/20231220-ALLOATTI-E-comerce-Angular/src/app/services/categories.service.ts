@@ -11,8 +11,8 @@ export class CategoriesService {
   
   constructor(private http: HttpClient) { }
 
-  public getAll(): Observable<any> {
-    return this.http.get(this.URL_API);
+  public getAll(): Observable<CategoryInterface[]> {
+    return this.http.get<CategoryInterface[]>(this.URL_API);
   }
 
   public getById(id: number): Observable<CategoryInterface> {

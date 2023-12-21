@@ -18,7 +18,15 @@ export class ListComponent implements OnInit{
   ngOnInit(): void {
     this.route.paramMap.subscribe((response) => {
       this.categoryName = undefined;
-      this.loadList(response.get("category") || undefined)
+      if (response.get("filterParams")) {
+        this.productService.filterList(response.get("filterParams")).subscribe(
+          (response) => {
+            this.productsList = response;
+          }
+        );
+      } else {
+        this.loadList(response.get("category") || undefined)
+      }
     })
   }
 
@@ -26,7 +34,6 @@ export class ListComponent implements OnInit{
     if (id) {
       this.productService.getProductsByCategory(parseInt(id)).subscribe(
         (response) => {
-          console.log(response)
           this.productsList = response;
           this.categoryService.getById(parseInt(id)).subscribe(
             (response) => {
@@ -47,5 +54,8 @@ export class ListComponent implements OnInit{
     (event.target as HTMLImageElement).src = "https://i.pinimg.com/736x/3a/67/19/3a67194f5897030237d83289372cf684.jpg"
   }
 
+  resetFilter(): void {
+    this.loadList();
+  }
 }
 

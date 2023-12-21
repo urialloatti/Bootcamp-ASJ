@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CartProduct, ProductInterface } from '../../../interfaces/productInterface';
+import { CartProduct } from '../../../interfaces/productInterface';
 import { ProductsService } from '../../../services/products.service';
-import { share } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,11 +10,13 @@ import { share } from 'rxjs';
 })
 export class CartComponent implements OnInit{
 
+  flagAlert: boolean = false;
   productsList!: CartProduct[];
   shipping: number = 27;
   totalPrice: number = 0;
   finalPrice: number = 0;
-  constructor(private productService: ProductsService) {}
+
+  constructor(private productService: ProductsService, private router: Router) {}
   ngOnInit(): void {
     this.productsList = this.productService.productsCart;
     for (let cartProduct of this.productsList) {
@@ -29,9 +31,13 @@ export class CartComponent implements OnInit{
 
   confirmPurchase():void {
     if(confirm("Do you want to confirm the purchase?")) {
-      this.productsList = [];
-      this.productService.emptyCart();
-      alert("Purchase confirmed!")
+      this.flagAlert = !this.flagAlert;
+      setTimeout(() => {
+        this.productsList = [];
+        this.productService.emptyCart();
+        this.flagAlert = false;
+        this.router.navigateByUrl("/products");
+      }, 3500);
     }
   }
 }

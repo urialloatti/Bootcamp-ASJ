@@ -1,8 +1,7 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
 import { ProductInterface } from '../../../interfaces/productInterface';
-import { tick } from '@angular/core/testing';
 
 @Component({
   selector: 'app-product',
@@ -11,8 +10,9 @@ import { tick } from '@angular/core/testing';
 })
 export class ProductComponent implements OnInit{
 
-  constructor(private productService: ProductsService, private route: ActivatedRoute) {}
+  constructor(private productService: ProductsService, private activatedRoute: ActivatedRoute, private router: Router) {}
 
+  flagAlert: boolean = false;
   currentProduct: ProductInterface = {
     id: 0,
     title: "",
@@ -29,7 +29,7 @@ export class ProductComponent implements OnInit{
   quantity: number = 1;
 
   ngOnInit(): void {
-    this.productService.getProduct(this.route.snapshot.params['id']).subscribe(
+    this.productService.getProduct(this.activatedRoute.snapshot.params['id']).subscribe(
       (response) => {
         console.log(response);
         this.currentProduct = response;
@@ -45,7 +45,9 @@ export class ProductComponent implements OnInit{
   addToCart(): void {
     if(confirm("Do you want to add the product?")) {
       this.productService.addToCart(this.currentProduct, this.quantity);
-      alert("Product added succesfully!")
+      this.flagAlert = !this.flagAlert;
+      setTimeout(()=> {this.router.navigateByUrl("/products");}, 2000);
+      
     }
   }
 }

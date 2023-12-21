@@ -1,7 +1,8 @@
+import { filter } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CartProduct, ProductInterface } from '../interfaces/productInterface';
+import { CartProduct, FilterList, ProductInterface } from '../interfaces/productInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,16 @@ export class ProductsService {
   }
 
   public addToCart(product: ProductInterface, quantity: number): void {
-    this.productsCart.push({product: product, quantity: quantity});
+    let flag = false;
+    for(let productCart of this.productsCart) {
+      if (productCart.product.id == product.id) {
+        productCart.quantity += quantity;
+        flag = true;
+      }
+    }
+    if (!flag) {
+      this.productsCart.push({product: product, quantity: quantity});
+    }
     this.cartCounter += quantity;
   }
 
@@ -37,7 +47,11 @@ export class ProductsService {
   }
 
   public getCartCounter(): number {
-
     return this.cartCounter;
+  }
+
+  public filterList(filterURL: string | null): Observable<ProductInterface[]> {
+    let urlget = this.URL_API + "/?" + filterURL
+    return this.http.get<ProductInterface[]>(urlget)
   }
 }

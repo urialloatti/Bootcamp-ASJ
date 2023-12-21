@@ -15,8 +15,8 @@
                         <tr *ngFor="let cartProd of productsList" class="align-middle">
                             <td class="picture-col"><img src="{{ cartProd.product.images[0] }}" alt="{{ cartProd.product.title }}"></td>
                             <td>{{ cartProd.product.title }}</td>
-                            <td class="text-center">{{ cartProd.quantity }}</td>
-                            <td class="text-end">{{ cartProd.product.price | currency:'USD'}}</td>
+                            <td class="text-center" >{{ cartProd.quantity }}</td>
+                            <td class="text-end" >{{ cartProd.product.price | currency:'USD'}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -45,6 +45,13 @@
                 <div class="row mb-3">
                     <div class="col text-center">
                         <button class="btn btn-secondary" [disabled]="!hasProducts()" (click)="confirmPurchase()">Confirm Purchase</button>
+                    </div>
+                </div>
+                <div class="row mt-2" *ngIf="flagAlert">
+                    <div class="col mx-3">
+                        <div class="alert alert-success rounded text-center" role="alert">
+                            <p>Purchase done succesfully!</p>
+                        </div>
                     </div>
                 </div>
             </div>
