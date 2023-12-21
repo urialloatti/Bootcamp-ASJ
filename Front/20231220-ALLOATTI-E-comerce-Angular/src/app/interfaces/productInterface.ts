@@ -16,9 +16,9 @@ export interface CartProduct {
 }
 
 export interface FilterList {
-    title?: string,
-    price?: number,
-    price_min?: number,
-    price_max?: number,
-    categoryId?: number
+    title: string |undefined,
+    price: number |undefined,
+    price_min: number |undefined,
+    price_max: number |undefined,
+    categoryId: number |undefined
 }

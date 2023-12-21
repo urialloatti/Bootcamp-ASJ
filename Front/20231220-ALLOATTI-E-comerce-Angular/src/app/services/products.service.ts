@@ -54,4 +54,6 @@ export class ProductsService {
     let urlget = this.URL_API + "/?" + filterURL
     return this.http.get<ProductInterface[]>(urlget)
   }
+
+  // public deleteFromCartById(id: number) 
 }

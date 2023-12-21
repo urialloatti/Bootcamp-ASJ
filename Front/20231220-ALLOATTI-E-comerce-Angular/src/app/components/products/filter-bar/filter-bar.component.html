@@ -53,31 +53,31 @@
     <form #myForm="ngForm" (ngSubmit)="sendParams()">
         <div class="mb-3">
             <label class="form-label">Title</label>
-            <input type="text" class="form-control" placeholder="Name" name="title" [(ngModel)]="filter.title">
+            <input type="text" class="form-control" placeholder="Name" name="title" [(ngModel)]="filterObject.title">
         </div>
         <div class="">
-            <select name="category" class="form-select" hidden [(ngModel)]="filter.categoryId">
+            <select name="category" class="form-select" hidden [(ngModel)]="filterObject.categoryId">
                 <option value="" selected>All</option>
                 <option value="{{category.id}}" *ngFor="let category of categoryList">{{ category.name }}</option>
             </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Price</label>
-            <input type="number" class="form-control" placeholder="Price" name="price" [(ngModel)]="filter.price">
+            <input type="number" class="form-control" placeholder="Price" name="price" [(ngModel)]="filterObject.price">
         </div>
         <div class="mb-3">
             <div class="row">
                 <div class="col">
                     <label class="form-label">Min</label>
-                    <input type="number" #minPrice="ngModel" class="form-control" placeholder="Min Price" name="price_min" [(ngModel)]="filter.price_min" [max]="filter.price_max || 999999">
+                    <input type="number" #minPrice="ngModel" class="form-control" placeholder="Min Price" name="price_min" [(ngModel)]="filterObject.price_min" [max]="filterObject.price_max || 999999">
                 </div>
                 <div class="col">
                     <label class="form-label">Max</label>
-                    <input type="number" #maxPrice="ngModel" class="form-control" placeholder="Max Price" name="price_max" [(ngModel)]="filter.price_max" [min]="filter.price_min|| 1">
+                    <input type="number" #maxPrice="ngModel" class="form-control" placeholder="Max Price" name="price_max" [(ngModel)]="filterObject.price_max" [min]="filterObject.price_min|| 1">
                 </div>
             </div>            
             <div class="col-auto" *ngIf="minPrice.errors?.['max']">
-                <span class="form-text">
+                <span class="form-text text-danger">
                     The minimum price can't be higher than the maximum.
                 </span>
             </div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -15,6 +15,24 @@ export class FilterBarComponent implements OnInit{
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private categoryService: CategoriesService) {}
 
   categoryList: CategoryInterface[] = [];
+  
+  filterFlag: boolean = false;
+
+  filterObject: FilterList | any = { // Si le sacamos ese 'any' se rompe en la línea 52
+    title: undefined,
+    price: undefined,
+    price_min: undefined, // se rompe la validación si le pongo un valor.
+    price_max: undefined,
+    categoryId: undefined // Está hidden en el from
+  }
+
+  filterTags: FilterList | any = {
+    title: "",
+    price: 0,
+    price_min: 0,
+    price_max: 0,
+    categoryId: undefined
+  }
 
   ngOnInit(): void {
 
@@ -23,80 +41,61 @@ export class FilterBarComponent implements OnInit{
         this.categoryList = response;
       });
 
-    this.activatedRoute.paramMap.subscribe((response) => {
-      if (response.get("filterParams")) {
-        let params = response.get("filterParams");
+    this.activatedRoute.paramMap.subscribe((response) => { // Tomamos los cambios en la url
+      if (response.get("filterParams")) { // Si tiene al menos un filterParams, vamos a mostrar los filtros que ya están aplicados
         this.filterFlag = true;
-        let paramsArray = params?.split("&");
-        let keyValues = paramsArray?.map((param) => param.split("=")) || [];
+        let params = response.get("filterParams"); // 'key=value&key=value&key=value'
+        let paramsArray = params?.split("&"); // ['key=value', 'key=value', 'key=value']
+        let keyValues = paramsArray?.map((param) => param.split("=")) || []; // [['key', 'value'], ['key', 'value'], ['key', 'value']]
         for (let param of keyValues) {
-          this.filter[param[0]] = param[1];
-          this.filterTags[param[0]] = param[1];
+          let key: keyof FilterList = param[0] as keyof FilterList;
+          this.filterObject[key] = param[1];
+          this.filterTags[key] = param[1];
         }
-      } else if (response.get("category")) {
+      } else if (response.get("category")) { // Si está seleccionada una categoría, vamos a cargar las etiquetas de las categorías.
         this.filterFlag = true;
-        this.filter.categoryId = response.get("category");
+        this.filterObject.categoryId = response.get("category");
         this.filterTags.categoryId = response.get("category");
       }     
     });
-
-
   }
-
-  @Output()
-  clearFiltersParams: EventEmitter<null> = new EventEmitter;
-
-  filterFlag: boolean = false;
-
-  filter: FilterList | any = {
-    title: undefined,
-    price: undefined,
-    price_min: undefined,
-    price_max: undefined,
-    categoryId: undefined
-  }
-
-  filterTags: FilterList | any = {
-    title: undefined,
-    price: undefined,
-    price_min: undefined,
-    price_max: undefined,
-    categoryId: undefined
-  }
-
 
   sendParams(): void {
     let urlFilter = "";
-    if (this.filter.title) {
-      urlFilter += `title=${this.filter.title}` 
+    if (this.filterObject.title) {
+      urlFilter += `title=${this.filterObject.title}` 
     }
-    if (this.filter.price) {
+    if (this.filterObject.price) {
       if (urlFilter != "") {
         urlFilter += "&";
       } 
-      urlFilter += `price=${this.filter.price}` 
+      urlFilter += `price=${this.filterObject.price}` 
     }
-    if (this.filter.price_min) {
+    if (this.filterObject.price_min) {
       if (urlFilter != "") {
         urlFilter += "&";
       } 
-      urlFilter += `price_min=${this.filter.price_min}` 
+      urlFilter += `price_min=${this.filterObject.price_min}` 
     }
-    if (this.filter.price_max) {
+    if (this.filterObject.price_max) {
       if (urlFilter != "") {
         urlFilter += "&";
       }
-      urlFilter += `price_max=${this.filter.price_max}` 
+      urlFilter += `price_max=${this.filterObject.price_max}` 
     }
-    if (this.filter.categoryId) {
+    if (this.filterObject.categoryId) {
       if (urlFilter != "") {
         urlFilter += "&";
       }
-      urlFilter += `categoryId=${this.filter.categoryId}` 
+      urlFilter += `categoryId=${this.filterObject.categoryId}` 
     }
 
     this.filterFlag = !this.filterFlag;
-    this.router.navigateByUrl("/products/query/" + urlFilter);
+    if (urlFilter.length > 0) {
+      this.router.navigateByUrl("/products/query/" + urlFilter);
+    } else {
+      this.router.navigateByUrl("/products");
+    }
   }
 
   clearFilters(form: NgForm): void {
@@ -114,14 +113,14 @@ export class FilterBarComponent implements OnInit{
   }
 
   removeFilter(key: keyof FilterList): void {
-    this.filter[key] = undefined;
+    this.filterObject[key] = undefined;
     this.filterTags[key] = undefined;
     this.sendParams();
   }
 
   removeRangeFilter(): void {
-    this.filter.price_min = undefined;
-    this.filter.price_max = undefined;
+    this.filterObject.price_min = undefined;
+    this.filterObject.price_max = undefined;
     this.filterTags.price_min = undefined;
     this.filterTags.price_min = undefined;
     this.sendParams();
