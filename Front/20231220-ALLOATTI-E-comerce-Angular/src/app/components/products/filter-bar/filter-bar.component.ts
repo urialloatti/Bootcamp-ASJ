@@ -66,36 +66,24 @@ export class FilterBarComponent implements OnInit{
       urlFilter += `title=${this.filterObject.title}` 
     }
     if (this.filterObject.price) {
-      if (urlFilter != "") {
-        urlFilter += "&";
-      } 
+      if (urlFilter != "") {urlFilter += "&";} 
       urlFilter += `price=${this.filterObject.price}` 
     }
     if (this.filterObject.price_min) {
-      if (urlFilter != "") {
-        urlFilter += "&";
-      } 
+      if (urlFilter != "") {urlFilter += "&";} 
       urlFilter += `price_min=${this.filterObject.price_min}` 
     }
     if (this.filterObject.price_max) {
-      if (urlFilter != "") {
-        urlFilter += "&";
-      }
+      if (urlFilter != "") {urlFilter += "&";}
       urlFilter += `price_max=${this.filterObject.price_max}` 
     }
     if (this.filterObject.categoryId) {
-      if (urlFilter != "") {
-        urlFilter += "&";
-      }
+      if (urlFilter != "") {urlFilter += "&";}
       urlFilter += `categoryId=${this.filterObject.categoryId}` 
     }
 
     this.filterFlag = !this.filterFlag;
-    if (urlFilter.length > 0) {
-      this.router.navigateByUrl("/products/query/" + urlFilter);
-    } else {
-      this.router.navigateByUrl("/products");
-    }
+    (urlFilter.length > 0)? this.router.navigateByUrl("/products/query/" + urlFilter): this.router.navigateByUrl("/products");
   }
 
   clearFilters(form: NgForm): void {

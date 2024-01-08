@@ -18,6 +18,10 @@ export class SideBarComponent {
     {
       name: "Rick and Morty API",
       path: "projects/rick-and-morty"
+    },
+    {
+      name: "Pipe Practise",
+      path: "projects/pipe-practise"
     }
   ]
 }

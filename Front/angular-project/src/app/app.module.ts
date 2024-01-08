@@ -16,6 +16,9 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ProjectsMainComponent } from './components/projects-main/projects-main.component';
 import { RickMortyTableComponent } from './components/rick-and-morty/rick-morty-table/rick-morty-table.component';
 import { RickMortyCharacterComponent } from './components/rick-and-morty/rick-morty-character/rick-morty-character.component';
+import { HomeComponent } from './components/home/home.component';
+import { PrimeNumbersFilterPipe } from './pipes/prime-numbers-filter.pipe';
+import { PipePractiseComponent } from './pipe-practise/pipe-practise.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { RickMortyCharacterComponent } from './components/rick-and-morty/rick-mo
     SideBarComponent,
     SimpsonsProjectComponent,
     SimpsonsTableComponent,
-    ToDoListComponent
+    ToDoListComponent,
+    HomeComponent,
+    PrimeNumbersFilterPipe,
+    PipePractiseComponent
   ],
   imports: [
     AppRoutingModule,

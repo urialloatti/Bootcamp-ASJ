@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
-import { SimpsonsProjectComponent } from './components/simpsons/simpsons-project/simpsons-project.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
+
+import { HomeComponent } from './components/home/home.component';
 import { ProjectsMainComponent } from './components/projects-main/projects-main.component';
-import { RickMortyTableComponent } from './components/rick-and-morty/rick-morty-table/rick-morty-table.component';
 import { RickMortyCharacterComponent } from './components/rick-and-morty/rick-morty-character/rick-morty-character.component';
+import { RickMortyTableComponent } from './components/rick-and-morty/rick-morty-table/rick-morty-table.component';
+import { SimpsonsProjectComponent } from './components/simpsons/simpsons-project/simpsons-project.component';
+import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
+import { PipePractiseComponent } from './pipe-practise/pipe-practise.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,10 @@ const routes: Routes = [
         ]
       },
       {
+        path: "pipe-practise",
+        component: PipePractiseComponent
+      },
+      {
         path: "**",
         redirectTo: "",
         pathMatch: "full"        
@@ -40,7 +46,7 @@ const routes: Routes = [
   },
   {
     path: "home",
-    component: AboutUsComponent
+    component: HomeComponent
   },
   {
     path: "**",
