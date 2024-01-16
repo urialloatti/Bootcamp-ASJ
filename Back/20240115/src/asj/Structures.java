@@ -2,8 +2,6 @@ package asj;
 
 import java.util.Scanner;
 
-import javax.sql.RowSet;
-
 public class Structures {
 
 	public static void main(String[] args) {
@@ -142,18 +140,23 @@ public class Structures {
 //			System.out.println("No es un número perfecto.");
 //		}
 		
-////		Draw the thingy
-//		Scanner scanner = new Scanner(System.in);
-//		int rows;
-//		do {
-//			System.out.println("Ingrese cuantos renglones desea imprimir.");
-//			rows = scanner.nextInt();
-//		} while ( rows < 0);
-//		scanner.close();
-//		String[] longString = {"* * * * * * * *", " * * * * * * * "};
-//		for (int i = 0; i < rows; i++) {
-//			System.out.println(longString[i % 2]);
-//		}
+//		Draw the thingy
+		Scanner scanner = new Scanner(System.in);
+		int rows;
+		do {
+			System.out.println("Ingrese cuantos renglones desea imprimir.");
+			rows = scanner.nextInt();
+		} while ( rows < 0);
+		scanner.close();
+		StringBuilder[] stringArray = {new StringBuilder(), new StringBuilder()};
+		for (int i = 0; i < rows - 1; i++) {
+			stringArray[0].append("* ");
+			stringArray[1].append(" *");
+		}
+		stringArray[0].append("*");
+		for (int i = 0; i < rows; i++) {
+			System.out.println(stringArray[i % 2]);
+		}
 		
 	}
 
