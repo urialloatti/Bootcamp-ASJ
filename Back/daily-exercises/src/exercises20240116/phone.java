@@ -1,4 +1,4 @@
-package DailyExercises;
+package exercises20240116;
 
 import java.util.Scanner;
 
@@ -9,21 +9,21 @@ public class phone {
 
 		System.out.println("Ingrese su texto: ");
 		String text = scanner.nextLine();
-		String result = Function(text);
+		String result = decriptInput(text);
 		System.out.println(result);
 	}
 
-	public static String Function(String text) {
+	public static String decriptInput(String text) {
 		StringBuilder result = new StringBuilder();
 		int currentNumber = 0;
 		int counter = -1;
 		for (int i = 0; i < text.length(); i++) {
-			char letra = text.charAt(i);
-			if ((int) letra == 32) {
+			char currentChar = text.charAt(i);
+			if ((int) currentChar == 32) {
 				result.append(obtenerChar(currentNumber, counter));
 				counter = -1;
 			} else {
-				currentNumber = Character.getNumericValue(letra);
+				currentNumber = Character.getNumericValue(currentChar);
 				counter++;
 			}
 			if (i == text.length() - 1) {

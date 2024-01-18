@@ -1,4 +1,4 @@
-package asj;
+package exercises20240115;
 
 import java.util.Scanner;
 
