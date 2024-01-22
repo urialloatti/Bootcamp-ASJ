@@ -1,72 +1,111 @@
 <div class="container pt-5 h-100 bg-secondary-subtle rounded">
-    <div class="row pt-4">
-        <div class="col-5">
-            <div class="container bg-light py-3 rounded">
-                <div class="row">
-                    <div class="col text-center mb-3">
-                        <h4>Add new element</h4>
-                    </div>
-                </div>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        placeholder="Insert the thing to do" 
-                        [(ngModel)]="toDoThing"
-                        (keyup.enter)="addToDo()"
-                    >
-                    <div class="text-center mt-2">
-                        <button class="btn btn-secondary" (click)="addToDo()">Add</button>
-                    </div>
-            </div>
+  <div class="row pt-4">
+    <div class="col-5">
+      <div class="container bg-light py-3 rounded">
+        <div class="row">
+          <div class="col text-center mb-3">
+            <h4>Add new element</h4>
+          </div>
         </div>
-        <div class="col-7 text-center">
-            <h3>To do list:</h3>
-            <article>
-                <div class="row mb-2">
-                    <div class="col">
-                        <button class="btn btn-secondary" (click)="filterAll()">See all</button>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-secondary" (click)="filterPending()">See pending</button>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-secondary" (click)="filterDone()">See finished</button>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-secondary" (click)="filterDeleted()">See deleted</button>
-                    </div>
-                </div>
-                <div class="row text-start" *ngIf="toDoListFiltered.length > 0">
-                    <div class="col-12">
-                        <ul class="list-group">
-                            <li class="list-group-item" *ngFor="let item of toDoListFiltered; index as i">
-                                <div class="row">
-                                    <div class="col-8" ngClass="{{(item.isDone)? 'text-decoration-line-through text-secondary':''}}">
-                                        <p class="ms-1 fw-bold">{{ item.value }}</p>
-                                        <p class="fw-light">{{ item.date | date: 'dd/MM/yyyy, hh:mm aa'}}</p>
-                                    </div>
-                                    <div class="col d-flex align-items-center justify-content-end">
-                                        <button class="btn pb-2 mx-1" ngClass="{{(item.isDone)? 'btn-success':'btn-outline-success'}}" (click)="item.toggleDone()">
-                                            <i class="bi bi-check-square"></i>
-                                        </button>
-                                        <button class="btn btn-outline-danger pb-2 mx-1" (click)="removeItem(i)">
-                                            <i *ngIf="!item.isDeleted" class="bi bi-trash3"></i>
-                                            <i *ngIf="item.isDeleted" class="bi bi-recycle"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div *ngIf="toDoListFiltered.length == 0">
-                    <div class="row p-4">
-                        <div class="col bg-warning-subtle rounded text-center py-5">
-                            <p class="h3 text-warning-emphasis">We don't have elemets to show you.</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Insert the thing to do"
+          [(ngModel)]="toDoThing"
+          (keyup.enter)="addToDo()"
+        />
+        <div class="text-center mt-2">
+          <button class="btn btn-secondary" (click)="addToDo()">Add</button>
         </div>
+      </div>
     </div>
+    <div class="col-7 text-center">
+      <h3>To do list:</h3>
+      <article>
+        <div class="row mb-2">
+          <div class="col">
+            <button class="btn btn-secondary" (click)="filterAll()">
+              See all
+            </button>
+          </div>
+          <div class="col">
+            <button class="btn btn-secondary" (click)="filterPending()">
+              See pending
+            </button>
+          </div>
+          <div class="col">
+            <button class="btn btn-secondary" (click)="filterDone()">
+              See finished
+            </button>
+          </div>
+          <div class="col">
+            <button class="btn btn-secondary" (click)="filterDeleted()">
+              See deleted
+            </button>
+          </div>
+        </div>
+        <div class="row text-start" *ngIf="toDoListFiltered.length > 0">
+          <div class="col-12">
+            <ul class="list-group">
+              <li
+                class="list-group-item"
+                *ngFor="let item of toDoListFiltered; index as i"
+              >
+                <div class="row">
+                  <div
+                    class="col-8"
+                    ngClass="{{
+                      item.done
+                        ? 'text-decoration-line-through text-secondary'
+                        : ''
+                    }}"
+                  >
+                    <p class="ms-1 fw-bold">{{ item.toDoString }}</p>
+                    <p class="fw-light">
+                      {{ item.date }}
+                    </p>
+                  </div>
+                  <div
+                    class="col d-flex align-items-center justify-content-end"
+                  >
+                    <button
+                      class="btn pb-2 mx-1 btn-outline-warning"
+                      (click)="updateToDo(item.id!)"
+                    >
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button
+                      class="btn pb-2 mx-1"
+                      ngClass="{{
+                        item.done ? 'btn-success' : 'btn-outline-success'
+                      }}"
+                      (click)="toggleDoneItem(item.id!)"
+                    >
+                      <i class="bi bi-check-square"></i>
+                    </button>
+                    <button
+                      class="btn btn-outline-danger pb-2 mx-1"
+                      (click)="toggleCancelItem(item.id!)"
+                    >
+                      <i *ngIf="!item.deleted" class="bi bi-trash3"></i>
+                      <i *ngIf="item.deleted" class="bi bi-recycle"></i>
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div *ngIf="toDoListFiltered.length == 0">
+          <div class="row p-4">
+            <div class="col bg-warning-subtle rounded text-center py-5">
+              <p class="h3 text-warning-emphasis">
+                We don't have elemets to show you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
 </div>

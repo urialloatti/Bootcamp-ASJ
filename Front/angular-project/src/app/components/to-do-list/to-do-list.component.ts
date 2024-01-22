@@ -1,62 +1,68 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ToDoService } from '../../services/to-do.service';
+import { ToDoInterface } from '../../interfaces/ToDoInterface';
 
 @Component({
   selector: 'app-to-do-list',
   templateUrl: './to-do-list.component.html',
-  styleUrl: './to-do-list.component.css'
+  styleUrl: './to-do-list.component.css',
 })
-export class ToDoListComponent {
-  
-  toDoThing: string = "";
-  toDoList: ToDo[] = [];
-  toDoListFiltered: ToDo[] = [];
+export class ToDoListComponent implements OnInit {
+  constructor(private toDoService: ToDoService) {}
 
-  addToDo() {
-    console.log(this.toDoThing)
-    let toDo = new ToDo(this.toDoThing);
-    this.toDoList.unshift(toDo);
-    this.toDoThing = "";
-    this.toDoListFiltered = this.toDoList.filter((item) => item.isDeleted == false);
+  toDoThing: string = '';
+  toDoList: ToDoInterface[] = [];
+  toDoListFiltered: ToDoInterface[] = [];
+
+  ngOnInit(): void {
+    this.loadList();
   }
 
-  removeItem(index: number) {
-    this.toDoListFiltered[index].toggleDelete();
-    this.toDoListFiltered.splice(index, 1);
+  addToDo() {
+    this.toDoService.postToDo(this.toDoThing).subscribe((response) => {
+      console.log(response);
+      this.toDoThing = '';
+      this.loadList();
+    });
+  }
+
+  toggleCancelItem(index: number) {
+    this.toDoService.cancelById(index).subscribe(() => this.loadList());
+  }
+
+  toggleDoneItem(index: number) {
+    this.toDoService.toggleDone(index).subscribe(() => this.loadList());
+  }
+
+  updateToDo(id: number) {
+    let toDo = this.toDoList.find((item) => item.id == id);
+    let newName = prompt(`Insert the new value: ${toDo?.toDoString}`);
+    if (newName !== null) {
+      this.toDoService.updateToDo(id, newName).subscribe(() => this.loadList());
+    }
   }
 
   filterAll() {
-    this.toDoListFiltered = this.toDoList.filter((item) => !item.isDeleted);
+    this.toDoListFiltered = this.toDoList.filter((item) => !item.deleted);
   }
   filterPending() {
-    this.toDoListFiltered = this.toDoList.filter((item) => (!item.isDone && !item.isDeleted));
+    this.toDoListFiltered = this.toDoList.filter(
+      (item) => !item.done && !item.deleted
+    );
   }
   filterDone() {
-    this.toDoListFiltered = this.toDoList.filter((item) => item.isDone);
+    this.toDoListFiltered = this.toDoList.filter((item) => item.done);
   }
   filterDeleted() {
-    this.toDoListFiltered = this.toDoList.filter((item) => item.isDeleted);
+    this.toDoListFiltered = this.toDoList.filter((item) => item.deleted);
   }
 
-}
+  private loadList() {
+    this.toDoService.getAll().subscribe((response) => {
+      this.toDoList = response;
+      console.log(this.toDoList);
 
-class ToDo {
-
-  date: Date;
-  isDeleted: boolean;
-  isDone: boolean;
-  value: string;
-
-  constructor(value: string) {
-    this.date = new Date();
-    this.isDeleted = false
-    this.isDone = false;
-    this.value = value;
-  }
-
-  toggleDelete() {
-    (this.isDeleted)? this.isDeleted = false: this.isDeleted = true;
-  }
-  toggleDone() {
-    (this.isDone)? this.isDone = false: this.isDone = true;
+      this.filterAll();
+    });
   }
 }

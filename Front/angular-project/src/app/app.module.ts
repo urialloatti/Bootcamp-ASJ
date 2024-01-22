@@ -19,6 +19,7 @@ import { RickMortyCharacterComponent } from './components/rick-and-morty/rick-mo
 import { HomeComponent } from './components/home/home.component';
 import { PrimeNumbersFilterPipe } from './pipes/prime-numbers-filter.pipe';
 import { PipePractiseComponent } from './pipe-practise/pipe-practise.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,16 +36,10 @@ import { PipePractiseComponent } from './pipe-practise/pipe-practise.component';
     ToDoListComponent,
     HomeComponent,
     PrimeNumbersFilterPipe,
-    PipePractiseComponent
+    PipePractiseComponent,
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
+  providers: [DatePipe],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
