@@ -1,1 +1,76 @@
-<p>view works!</p>
+<section class="container py-4 rounded h-100 body">
+  <div class="row">
+    <div class="col d-none d-sm-block"></div>
+    <div class="col col-sm-10 col-md-9">
+      <article class="bg-body-tertiary rounded p-2 px-5" *ngIf="isVideoLoaded">
+        <div class="row mb-3">
+          <div class="col">
+            <a class="text-decoration-none" routerLink="/videos"
+              >← Ir al listado</a
+            >
+          </div>
+        </div>
+        <div class="row mb-3 d-flex align-items-center">
+          <div class="col ps-3">
+            <div class="row mb-4 d-none d-md-block">
+              <div class="col-12 text-center">
+                <h1 class="h2 title">{{ currentVideo.title }}</h1>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <div
+                  class="bg-white rounded border border-secondary-subtle text-center p-2"
+                >
+                  <iframe
+                    [src]="currentVideo.url | safePipe"
+                    [title]="currentVideo.title"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-8">
+                <h2 class="h4 text-body-tertiary">
+                  <span class="h5">Categoría: </span>
+                  {{ currentVideo.category.name }}
+                </h2>
+              </div>
+              <div class="col-2">
+                <h2 class="h4 text-body-tertiary">
+                  <span class="h5">Vistas: </span>{{ currentVideo.views }}
+                </h2>
+              </div>
+            </div>
+            <div class="col-2">
+              <button class="btn btn-secondary">like</button>
+            </div>
+            <div class="row mb-3">
+              <div class="col-12">
+                <div
+                  class="bg-white rounded border border-secondary-subtle p-2"
+                >
+                  <p class="text-body-secondary">
+                    {{ currentVideo.description }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="col d-none d-sm-block"></div>
+  </div>
+</section>
+<section>
+  <!-- <shared-modal-confirm
+      *ngIf="modalConfirmFlag"
+      [modalData]="modalConfirmObject"
+    ></shared-modal-confirm>
+    <shared-modal-redirect
+      *ngIf="modalRedirectFlag"
+      [modalData]="modalRedirectObject"
+    ></shared-modal-redirect> -->
+</section>

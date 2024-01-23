@@ -2,7 +2,7 @@ export interface VideoInterface {
   id?: number;
   url: string;
   title: string;
-  category: string;
+  category: CategoryInterface;
   description: string;
   views: number;
   likes: number;

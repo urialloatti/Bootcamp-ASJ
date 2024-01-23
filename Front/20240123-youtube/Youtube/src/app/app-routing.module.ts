@@ -7,18 +7,12 @@ import { NewVideoComponent } from './components/videos/new-video/new-video.compo
 const routes: Routes = [
   {
     path: 'videos',
-    component: ListComponent,
-    // children: [
-    //   { path: '', component: ListComponent },
-    //   { path: 'new', component: NewVideoComponent },
-    //   { path: ':id', component: ViewComponent },
-    // ],
+    children: [
+      { path: '', component: ListComponent },
+      { path: 'new', component: NewVideoComponent },
+      { path: ':id', component: ViewComponent },
+    ],
   },
-  {
-    path: 'videos/new',
-    component: NewVideoComponent,
-  },
-  { path: 'videos/:id', component: ViewComponent },
   {
     path: '',
     redirectTo: 'videos',

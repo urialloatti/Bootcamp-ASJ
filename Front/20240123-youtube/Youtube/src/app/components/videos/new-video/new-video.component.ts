@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { CategoriesService } from '../../../services/categories.service';
+import { VideoService } from '../../../services/video.service';
+
 import {
   CategoryInterface,
   NewVideoInterface,
-  VideoInterface,
 } from '../../../interfaces/video.interface';
-import { CategoriesService } from '../../../services/categories.service';
-import { VideoService } from '../../../services/video.service';
 
 @Component({
   selector: 'app-new-video',
@@ -15,7 +17,8 @@ import { VideoService } from '../../../services/video.service';
 export class NewVideoComponent implements OnInit {
   constructor(
     private category: CategoriesService,
-    private videos: VideoService
+    private videos: VideoService,
+    private route: Router
   ) {}
 
   currentVideo: NewVideoInterface = {
@@ -29,6 +32,7 @@ export class NewVideoComponent implements OnInit {
     url: false,
     title: false,
     categoryId: false,
+    description: false,
   };
 
   isFormValid: boolean = true;
@@ -54,18 +58,26 @@ export class NewVideoComponent implements OnInit {
     this.validateForm();
     Object.keys(this.isFormfieldInvalid).forEach((key) => {
       if (this.isFormValid && this.isFormfieldInvalid[key]) {
-        prompt('Hay errores en el formulario');
+        alert('Hay errores en el formulario');
         this.isFormValid = false;
       }
     });
     if (this.isFormValid) {
-      this.videos.addVideo(this.currentVideo).subscribe();
+      this.currentVideo.url = this.currentVideo.url.replace(
+        /watch\?v=/,
+        'embed/'
+      );
+      this.videos
+        .addVideo(this.currentVideo)
+        .subscribe(() => this.route.navigateByUrl('/'));
     }
   }
 
   private validateForm() {
-    this.isFormfieldInvalid.url = this.validateURL(this.currentVideo.url);
+    this.isFormfieldInvalid.url = !this.validateURL(this.currentVideo.url);
     this.isFormfieldInvalid.title = this.currentVideo.title.length < 4;
     this.isFormfieldInvalid.categoryId = this.currentVideo.categoryId == -1;
+    this.isFormfieldInvalid.categoryId =
+      this.currentVideo.description?.length! > 254;
   }
 }

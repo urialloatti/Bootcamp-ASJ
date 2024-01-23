@@ -15,4 +15,16 @@ export class VideoService {
   public addVideo(video: NewVideoInterface): Observable<VideoInterface> {
     return this.http.post<VideoInterface>(this.URL_API, video);
   }
+
+  public getAll(): Observable<VideoInterface[]> {
+    return this.http.get<VideoInterface[]>(this.URL_API);
+  }
+
+  public getById(id: number): Observable<VideoInterface> {
+    return this.http.get<VideoInterface>(this.URL_API + '/' + id);
+  }
+
+  public deleteById(id: number): Observable<VideoInterface> {
+    return this.http.delete<VideoInterface>(this.URL_API + '/' + id);
+  }
 }

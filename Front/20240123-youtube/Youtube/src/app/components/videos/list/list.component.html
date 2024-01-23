@@ -1,1 +1,74 @@
-<div class="container"></div>
+<div class="container body py-4 px-3 rounded">
+  <div class="row mb-2">
+    <div class="col text-center">
+      <h1 class="title">Lista de videos</h1>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <section class="row gx-5">
+      <article class="col text-center items-table rounded">
+        <div class="row mb-2">
+          <div class="col text-start">
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              routerLink="/videos/new"
+            >
+              <span>Añadir video</span>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="true">
+          <table class="table table-striped table-hover">
+            <thead class="table-light">
+              <tr>
+                <th
+                  scope="col"
+                  class="text-start ps-4"
+                  *ngFor="let section of tableSections"
+                >
+                  {{ section }}
+                </th>
+                <th scope="col" class="mx-1 text-center last-column">
+                  <i class="bi bi-gear-fill"></i>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="tr h-100 text-start" *ngFor="let video of videosList">
+                <td class="ps-4">{{ video.id }}</td>
+                <td class="ps-4">{{ video.title }}</td>
+                <td class="ps-4">{{ video.category.name }}</td>
+                <td class="ps-4">{{ video.likes }}/{{ video.dislikes }}</td>
+                <td class="ps-4">{{ video.ranking }}</td>
+                <td class="py-2 text-center last-column">
+                  <span class="bg-transparent me-2">
+                    <button
+                      class="btn btn-secondary pb-2"
+                      routerLink="{{ video.id! }}"
+                    >
+                      <i class="bi bi-youtube"></i>
+                    </button>
+                  </span>
+                  <span class="bg-transparent">
+                    <button
+                      class="btn btn-secondary pb-2"
+                      (click)="deleteVideoById(video.id!, video.title)"
+                    >
+                      <i class="bi bi-trash3"></i>
+                    </button>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- <shared-no-items-alert
+            *ngIf="section.itemsList.length == 0"
+            alerLabel="{{ section.section.toLowerCase() }}s"
+          ></shared-no-items-alert> -->
+      </article>
+    </section>
+    <section></section>
+  </div>
+</div>

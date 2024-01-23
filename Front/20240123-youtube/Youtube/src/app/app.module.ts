@@ -1,18 +1,16 @@
-import { NgModule } from '@angular/core';
-import {
-  BrowserModule,
-  provideClientHydration,
-} from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/shared/header/header.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { ViewComponent } from './components/videos/view/view.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 import { ListComponent } from './components/videos/list/list.component';
 import { NewVideoComponent } from './components/videos/new-video/new-video.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { ViewComponent } from './components/videos/view/view.component';
+import { SafePipePipe } from './pipes/safe-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -20,11 +18,12 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     ListComponent,
-    NewVideoComponent,
     ViewComponent,
+    NewVideoComponent,
+    SafePipePipe,
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
-  providers: [provideClientHydration()],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

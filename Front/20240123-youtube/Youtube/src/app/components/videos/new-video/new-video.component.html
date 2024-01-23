@@ -1,6 +1,6 @@
 <section class="container">
   <h1>Cargar nuevo video</h1>
-  <form class="form-control" #videoForm="ngForm">
+  <form class="form-control" #videoForm="ngForm" (ngSubmit)="submitForm()">
     <div class="mb-3">
       <label class="form-label">URL <span class="fw-light">*</span></label>
       <input
@@ -69,14 +69,16 @@
         name="description"
         #description="ngModel"
         [(ngModel)]="currentVideo.description"
-        required
-        minlength="4"
+        maxlength="254"
         [ngClass]="description.errors ? '' : 'is-valid'"
         [ngClass]="false ? 'is-invalid' : ''"
         class="form-control"
         cols="30"
         rows="10"
       ></textarea>
+      <div class="form-text" *ngIf="isFormfieldInvalid.description">
+        <p>Deben ser menos de 255 caracteres.</p>
+      </div>
     </div>
     <div class="row">
       <div class="col text-center">
