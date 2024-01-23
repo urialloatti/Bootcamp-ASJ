@@ -1,0 +1,87 @@
+<section class="container">
+  <h1>Cargar nuevo video</h1>
+  <form class="form-control" #videoForm="ngForm">
+    <div class="mb-3">
+      <label class="form-label">URL <span class="fw-light">*</span></label>
+      <input
+        type="text"
+        name="url"
+        #url="ngModel"
+        [(ngModel)]="currentVideo.url"
+        required
+        minlength="4"
+        [ngClass]="url.errors ? '' : 'is-valid'"
+        [ngClass]="isFormfieldInvalid.url ? 'is-invalid' : ''"
+        class="form-control"
+      />
+      <div class="form-text" *ngIf="isFormfieldInvalid.url">
+        <p>Debe ingresar un formato válido.</p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Título <span class="fw-light">*</span></label>
+      <input
+        type="text"
+        name="title"
+        #title="ngModel"
+        [(ngModel)]="currentVideo.title"
+        required
+        minlength="4"
+        [ngClass]="title.errors ? '' : 'is-valid'"
+        [ngClass]="isFormfieldInvalid.title ? 'is-invalid' : ''"
+        class="form-control"
+      />
+      <div class="form-text" *ngIf="isFormfieldInvalid.title && title.errors">
+        <p>Debe ingresar un formato válido.</p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label"
+        >Categoría <span class="fw-light">*</span></label
+      >
+      <select
+        *ngIf="isCategoriesLoaded"
+        name="category"
+        #category="ngModel"
+        [(ngModel)]="currentVideo.categoryId"
+        class="form-select"
+        [ngClass]="isFormfieldInvalid.categoryId ? 'is-invalid' : ''"
+        [ngClass]="currentVideo.categoryId != -1 ? 'is-valid' : ''"
+      >
+        <option value="-1" disabled>Seleccione una categoría</option>
+        <option
+          value="{{ category.id }}"
+          *ngFor="let category of categoriesList"
+        >
+          {{ category.name }}
+        </option>
+      </select>
+      <div
+        class="form-text"
+        *ngIf="isFormfieldInvalid.categoryId && currentVideo.categoryId == -1"
+      >
+        <p>Debe seleccionar una opción.</p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea
+        name="description"
+        #description="ngModel"
+        [(ngModel)]="currentVideo.description"
+        required
+        minlength="4"
+        [ngClass]="description.errors ? '' : 'is-valid'"
+        [ngClass]="false ? 'is-invalid' : ''"
+        class="form-control"
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <button class="btn btn-secondary">Guadrdar</button>
+      </div>
+    </div>
+  </form>
+</section>
