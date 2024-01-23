@@ -94,11 +94,17 @@
         </div>
         <div class="row">
           <div class="col text-center">
-            <button class="btn btn-secondary">Guadrdar</button>
+            <button class="btn btn-secondary">Guardar</button>
           </div>
         </div>
       </form>
     </div>
     <div class="col"></div>
   </div>
+</section>
+<section>
+  <shared-modal-redirect
+    *ngIf="modalRedirectFlag"
+    [modalData]="modalRedirectObject"
+  ></shared-modal-redirect>
 </section>

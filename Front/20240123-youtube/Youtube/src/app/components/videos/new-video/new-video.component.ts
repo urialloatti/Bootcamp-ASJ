@@ -8,6 +8,7 @@ import {
   CategoryInterface,
   NewVideoInterface,
 } from '../../../interfaces/video.interface';
+import { ModalRedirectInterface } from '../../../interfaces/modalInterfaces';
 
 @Component({
   selector: 'app-new-video',
@@ -17,8 +18,7 @@ import {
 export class NewVideoComponent implements OnInit {
   constructor(
     private category: CategoriesService,
-    private videos: VideoService,
-    private route: Router
+    private videos: VideoService
   ) {}
 
   currentVideo: NewVideoInterface = {
@@ -39,6 +39,9 @@ export class NewVideoComponent implements OnInit {
 
   categoriesList!: CategoryInterface[];
   isCategoriesLoaded: boolean = true;
+
+  modalRedirectFlag: boolean = false;
+  modalRedirectObject!: ModalRedirectInterface;
 
   ngOnInit(): void {
     this.category.getList().subscribe((list) => {
@@ -67,9 +70,13 @@ export class NewVideoComponent implements OnInit {
         /watch\?v=/,
         'embed/'
       );
-      this.videos
-        .addVideo(this.currentVideo)
-        .subscribe(() => this.route.navigateByUrl('/'));
+      this.videos.addVideo(this.currentVideo).subscribe(() => {
+        this.modalRedirectObject = {
+          message: 'Video cargado con éxito.',
+          path: '/videos',
+        };
+        this.modalRedirectFlag = true;
+      });
     }
   }
 

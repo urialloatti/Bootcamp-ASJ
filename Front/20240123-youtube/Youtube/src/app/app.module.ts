@@ -12,6 +12,7 @@ import { NewVideoComponent } from './components/videos/new-video/new-video.compo
 import { ViewComponent } from './components/videos/view/view.component';
 import { SafePipePipe } from './pipes/safe-pipe.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { ModalRedirectComponent } from './components/shared/modal-redirect/modal-redirect.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
     NewVideoComponent,
     SafePipePipe,
     FilterPipePipe,
+    ModalRedirectComponent,
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
   providers: [],
