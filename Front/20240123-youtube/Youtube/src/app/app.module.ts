@@ -11,6 +11,7 @@ import { ListComponent } from './components/videos/list/list.component';
 import { NewVideoComponent } from './components/videos/new-video/new-video.component';
 import { ViewComponent } from './components/videos/view/view.component';
 import { SafePipePipe } from './pipes/safe-pipe.pipe';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SafePipePipe } from './pipes/safe-pipe.pipe';
     ViewComponent,
     NewVideoComponent,
     SafePipePipe,
+    FilterPipePipe,
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
   providers: [],

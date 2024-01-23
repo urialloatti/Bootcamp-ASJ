@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg-dark: #504040;
+  --bg-accent: #902220;
+  --bg-light: #fff6f6;
+  --bg-light-accent: #ffe8e8;
+
+  --color-light: #efd2d2;
+  --color-lighter: #fad3d3;
+  --color-dark: #101a24;
+  --color-middle: #8a6d6d;
+  --color-accent: #b02828;
+  --color-accent-light: #c83838;
+  --color-accent-lighter: #e43d3d;
+}
+
+.body {
+  background-color: var(--bg-light-accent);
+}
+
+.title {
+  color: var(--color-middle) !important;
+}
+
+.btn-color {
+  background-color: var(--bg-accent);
+}
+
+.btn-color:hover {
+  background-color: var(--color-accent-light);
+  transition: 0.3s;
+}

@@ -1,1 +1,58 @@
-<p>header works!</p>
+<div class="container-fluid">
+  <div class="row ps-2 align-middle">
+    <div class="col-7 col-lg-6 d-flex justify-content-start py-3">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle fw-medium menu-option"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Videos
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" id="dropdown">
+                  <li>
+                    <a
+                      class="dropdown-item dropdown-menu-items"
+                      routerLink="/videos"
+                      >Lista</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item dropdown-menu-items"
+                      routerLink="/videos/new"
+                      >Nuevo video</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="col d-flex py-3 align-items-center justify-content-end">
+      <div class="nav-brand me-1">
+        <a class="text-decoration-none h3 fst-italic fs-3" routerLink="/"
+          ><i class="bi bi-youtube" id="web-icon"></i> Youtube MockUp</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,7 @@
-
+.video-container {
+  height: 40vh;
+}
+iframe {
+  height: 100%;
+  aspect-ratio: 16/9;
+}

@@ -13,7 +13,7 @@ export interface VideoInterface {
 export interface NewVideoInterface {
   url: string;
   title: string;
-  categoryId: number;
+  category: number;
   description?: string;
 }
 

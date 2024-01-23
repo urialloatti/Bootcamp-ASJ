@@ -1,4 +1,4 @@
-<div class="container body py-4 px-3 rounded">
+<div class="container body py-4 px-3 rounded h-100">
   <div class="row mb-2">
     <div class="col text-center">
       <h1 class="title">Lista de videos</h1>
@@ -7,8 +7,33 @@
   <div class="container-fluid">
     <section class="row gx-5">
       <article class="col text-center items-table rounded">
-        <div class="row mb-2">
-          <div class="col text-start">
+        <div class="row mb-2 d-flex align-items-end">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Buscar video"
+              [(ngModel)]="searchTerm"
+            />
+          </div>
+          <div class="col">
+            <label class="form-label">Filtrar por categoría</label>
+            <select
+              name="category"
+              [(ngModel)]="currentCategoryId"
+              class="form-select"
+              (change)="filterByCategory()"
+            >
+              <option value="-1">Todos</option>
+              <option
+                value="{{ category.id }}"
+                *ngFor="let category of categoriesList"
+              >
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col text-end">
             <button
               class="btn btn-outline-secondary"
               type="button"
@@ -18,7 +43,7 @@
             </button>
           </div>
         </div>
-        <div *ngIf="true">
+        <section *ngIf="videosList.length > 1">
           <table class="table table-striped table-hover">
             <thead class="table-light">
               <tr>
@@ -35,7 +60,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="tr h-100 text-start" *ngFor="let video of videosList">
+              <tr
+                class="tr h-100 text-start"
+                *ngFor="let video of videosList | filterPipe : searchTerm"
+              >
                 <td class="ps-4">{{ video.id }}</td>
                 <td class="ps-4">{{ video.title }}</td>
                 <td class="ps-4">{{ video.category.name }}</td>
@@ -62,7 +90,16 @@
               </tr>
             </tbody>
           </table>
-        </div>
+        </section>
+        <section *ngIf="videosList.length == 0">
+          <div class="row m-4 py-4 body rounded">
+            <div class="col"></div>
+            <div class="col-8 rounded text-center py-5" id="no-items">
+              <p class="h3">No hay videos para mostrar</p>
+            </div>
+            <div class="col"></div>
+          </div>
+        </section>
         <!-- <shared-no-items-alert
             *ngIf="section.itemsList.length == 0"
             alerLabel="{{ section.section.toLowerCase() }}s"

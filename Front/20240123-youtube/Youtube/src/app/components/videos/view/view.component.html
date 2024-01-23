@@ -20,7 +20,7 @@
             <div class="row mb-3">
               <div class="col-12">
                 <div
-                  class="bg-white rounded border border-secondary-subtle text-center p-2"
+                  class="bg-white rounded border border-secondary-subtle text-center p-2 video-container"
                 >
                   <iframe
                     [src]="currentVideo.url | safePipe"
@@ -31,7 +31,7 @@
             </div>
 
             <div class="row mb-3">
-              <div class="col-8">
+              <div class="col">
                 <h2 class="h4 text-body-tertiary">
                   <span class="h5">Categoría: </span>
                   {{ currentVideo.category.name }}
@@ -42,9 +42,48 @@
                   <span class="h5">Vistas: </span>{{ currentVideo.views }}
                 </h2>
               </div>
-            </div>
-            <div class="col-2">
-              <button class="btn btn-secondary">like</button>
+              <div class="col-3">
+                <button
+                  [disabled]="hasLiked"
+                  class="btn btn-secondary me-2"
+                  (click)="likeVideo(true)"
+                >
+                  {{ currentVideo.likes }}
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                </button>
+                <button
+                  [disabled]="hasLiked"
+                  class="btn btn-secondary"
+                  (click)="likeVideo(false)"
+                >
+                  {{ currentVideo.dislikes }}
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                </button>
+              </div>
+              <div class="col-2">
+                <div>
+                  <span *ngFor="let star of starArray">
+                    <i
+                      class="bi bi-star"
+                      *ngIf="star.star == 'empty'"
+                      (click)="sendCalification(star.value)"
+                    ></i>
+                    <i
+                      class="bi bi-star-fill"
+                      *ngIf="star.star == 'full'"
+                      (click)="sendCalification(star.value)"
+                    ></i>
+                    <i
+                      class="bi bi-star-half"
+                      *ngIf="star.star == 'middle'"
+                      (click)="sendCalification(star.value)"
+                    ></i>
+                  </span>
+                </div>
+                <label class="fw-light"
+                  >(Calificación {{ currentVideo.ranking }})
+                </label>
+              </div>
             </div>
             <div class="row mb-3">
               <div class="col-12">

@@ -24,7 +24,7 @@ export class NewVideoComponent implements OnInit {
   currentVideo: NewVideoInterface = {
     url: '',
     title: '',
-    categoryId: -1,
+    category: -1,
     description: '',
   };
 
@@ -76,7 +76,7 @@ export class NewVideoComponent implements OnInit {
   private validateForm() {
     this.isFormfieldInvalid.url = !this.validateURL(this.currentVideo.url);
     this.isFormfieldInvalid.title = this.currentVideo.title.length < 4;
-    this.isFormfieldInvalid.categoryId = this.currentVideo.categoryId == -1;
+    this.isFormfieldInvalid.categoryId = this.currentVideo.category == -1;
     this.isFormfieldInvalid.categoryId =
       this.currentVideo.description?.length! > 254;
   }
